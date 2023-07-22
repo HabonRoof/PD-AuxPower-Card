@@ -103,17 +103,18 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
-  MX_I2C1_Init();
+//  MX_I2C1_Init();
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   // start pwm generation
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+//  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
   // ADC calibration
-  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+//  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
   // start ADC1 interrupt
-  HAL_ADC_Start_IT(&hadc1);
+//  HAL_ADC_Start_IT(&hadc1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,6 +122,22 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  HAL_GPIO_TogglePin(LED_24v_GPIO_Port,LED_24v_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_5v_GPIO_Port,LED_5v_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_12v_GPIO_Port,LED_12v_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_3v3_GPIO_Port,LED_3v3_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_3v3_GPIO_Port,LED_3v3_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_12v_GPIO_Port,LED_12v_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_5v_GPIO_Port,LED_5v_Pin);
+	  HAL_Delay(50);
+	  HAL_GPIO_TogglePin(LED_24v_GPIO_Port,LED_24v_Pin);
+	  HAL_Delay(50);
 
     /* USER CODE BEGIN 3 */
   }
@@ -527,7 +544,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : USB_INT_Pin */
   GPIO_InitStruct.Pin = USB_INT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(USB_INT_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */

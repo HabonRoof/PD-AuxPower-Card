@@ -1647,7 +1647,7 @@
     )
     (pin "1" (uuid 54de1f3e-5ec4-4ec2-9c45-eb8a1aad8dff))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -1675,7 +1675,7 @@
     )
     (pin "1" (uuid bb6d54cb-625b-45ec-9bdb-2cfed219276d))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -1703,7 +1703,7 @@
     )
     (pin "1" (uuid 5a6e217d-6b53-45e5-b8c0-557fed479136))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR059") (unit 1)
         )
@@ -1728,7 +1728,7 @@
     )
     (pin "1" (uuid 79b579d9-14e4-49b0-8377-1937fd404766))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR070") (unit 1)
         )
@@ -1753,7 +1753,7 @@
     )
     (pin "1" (uuid 7cf4b8c0-44d3-4912-96d0-696967378827))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR058") (unit 1)
         )
@@ -1779,7 +1779,7 @@
     (pin "1" (uuid dfd059e9-7506-473b-8c47-b22e7053e4ef))
     (pin "2" (uuid 1328e440-e581-4c54-bd07-bd94f890b31a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R25") (unit 1)
         )
@@ -1805,7 +1805,7 @@
     (pin "1" (uuid e5036c3f-ae76-4669-8f1e-15504187daf3))
     (pin "2" (uuid 56134411-7485-4eeb-9dda-e098c28b8082))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R16") (unit 1)
         )
@@ -1831,7 +1831,7 @@
     (pin "1" (uuid 79ab0d12-aa56-4f7a-8c86-4ac4e9f9d1e5))
     (pin "2" (uuid a3d06d15-cf21-430b-9956-6d902bc74173))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R28") (unit 1)
         )
@@ -1856,7 +1856,7 @@
     )
     (pin "1" (uuid 1fad88c6-4362-412c-9f49-1d34f1564601))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR010") (unit 1)
         )
@@ -1884,7 +1884,7 @@
     )
     (pin "1" (uuid a38aba2e-7287-4c81-a895-b396fa6fae47))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -1912,7 +1912,7 @@
     )
     (pin "1" (uuid dd215d8e-b712-4d27-af78-dcc1bb72f4f0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -1941,7 +1941,7 @@
     (pin "1" (uuid dd90410d-ba9b-430f-b68a-e707c1d16e45))
     (pin "2" (uuid d27bb11d-9a78-424d-a66d-5985cf1d157b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R34") (unit 1)
         )
@@ -1967,7 +1967,7 @@
     (pin "1" (uuid c69ddc2f-5f9b-4469-a941-ed53bae6fa52))
     (pin "2" (uuid 1d567fad-a65a-41cf-ba3f-76182e5548fc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R24") (unit 1)
         )
@@ -1993,7 +1993,7 @@
     (pin "1" (uuid af8346b3-8428-4b1d-955a-8348d667cb89))
     (pin "2" (uuid 10bd1a6d-9635-4ac5-a3b5-fd4c235e662a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C14") (unit 1)
         )
@@ -2019,7 +2019,7 @@
     (pin "1" (uuid 91db6dc4-59b9-47b0-b014-2e79baec5b09))
     (pin "2" (uuid 02b26414-3f3b-4dd2-8d1f-c36faaeb325a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C18") (unit 1)
         )
@@ -2045,7 +2045,7 @@
     (pin "1" (uuid 7157ef36-ce01-49a5-a4bc-4e3be12d01e4))
     (pin "2" (uuid ebff5606-45e6-4d66-9242-d63979c69ba6))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D14") (unit 1)
         )
@@ -2071,7 +2071,7 @@
     (pin "1" (uuid dd24c668-3939-4e0d-985d-fbf3079ace42))
     (pin "2" (uuid e6d0f317-73ae-4718-a541-2cfdc6b93a79))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R26") (unit 1)
         )
@@ -2097,7 +2097,7 @@
     (pin "1" (uuid d798777d-533b-4be8-99de-ffed1cdc5fff))
     (pin "2" (uuid 8e931243-8ddc-4b8a-a793-060ae58f723e))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C23") (unit 1)
         )
@@ -2122,7 +2122,7 @@
     )
     (pin "1" (uuid 81f93884-702a-4133-8d37-4a3e85814e42))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR071") (unit 1)
         )
@@ -2147,7 +2147,7 @@
     )
     (pin "1" (uuid 47b7d059-3fe6-45f6-b48c-d23202e3a6be))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR024") (unit 1)
         )
@@ -2176,7 +2176,7 @@
     (pin "1" (uuid b09ada4d-e819-4987-b14d-3462ac2d2d5f))
     (pin "2" (uuid 48a8dd9e-6a14-41e2-bf7f-3f19c43aa958))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R3") (unit 1)
         )
@@ -2208,7 +2208,7 @@
     (pin "1" (uuid 6ea0397d-3646-4d6f-9de3-da37439b1ead))
     (pin "2" (uuid 63fd5bd3-582d-47c3-86c9-489643c0c733))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D12") (unit 1)
         )
@@ -2234,7 +2234,7 @@
     (pin "1" (uuid 0b066c8f-15ba-43b6-832a-6ebdc18eb25c))
     (pin "2" (uuid 13182c2f-0e58-46a6-b54a-0362b2b859fb))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C20") (unit 1)
         )
@@ -2261,7 +2261,7 @@
     (pin "2" (uuid 3b1de4f9-2fd8-4015-af13-f29393705476))
     (pin "3" (uuid 817461e9-2a7e-4f23-b516-f95264c2e80c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "U9") (unit 1)
         )
@@ -2287,7 +2287,7 @@
     (pin "1" (uuid 3b3ce652-9b1f-499e-b49c-10ec1a8b2607))
     (pin "2" (uuid 4f42fe3f-d432-47cd-bd42-df5b9490d2d0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R29") (unit 1)
         )
@@ -2314,7 +2314,7 @@
     (pin "2" (uuid 4e1c4d5e-2f54-460f-bfc4-afbc4eaa14f2))
     (pin "3" (uuid 10b64add-7a48-4a03-a13e-60c022e35127))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D9") (unit 1)
         )
@@ -2339,7 +2339,7 @@
     )
     (pin "1" (uuid 8416aa57-80af-47cc-b6f0-3caf4feaa5dc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -2368,7 +2368,7 @@
     (pin "1" (uuid f3304813-b778-4fcc-a3e2-f3cf947147d1))
     (pin "2" (uuid db45ba1b-2c8e-4b85-bcfd-56cb0f77cab1))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C24") (unit 1)
         )
@@ -2394,7 +2394,7 @@
     (pin "1" (uuid 1bd76dd6-069e-4c04-844f-071f2195e08d))
     (pin "2" (uuid a362b164-578b-41ff-8944-73540fe9c1fa))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R23") (unit 1)
         )
@@ -2419,7 +2419,7 @@
     )
     (pin "1" (uuid 59eeae35-4ce9-4a8f-937a-990e16d48e64))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -2448,7 +2448,7 @@
     (pin "1" (uuid 13307b91-ac20-4b5a-8fc2-e45406521cf8))
     (pin "2" (uuid 08ae9180-141c-4501-924a-a432877293e5))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R30") (unit 1)
         )
@@ -2474,7 +2474,7 @@
     (pin "1" (uuid 60444ad8-699d-4559-9eb6-8ed3ca090679))
     (pin "2" (uuid 845c3fac-4483-46c3-83e7-63ce98783f9f))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R33") (unit 1)
         )
@@ -2500,7 +2500,7 @@
     (pin "1" (uuid e70cfce5-a49d-4481-b503-b16b1804c764))
     (pin "2" (uuid 7598796c-e508-4eaa-a71b-2bc042209159))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R32") (unit 1)
         )
@@ -2526,7 +2526,7 @@
     (pin "1" (uuid 712457b7-1ada-4e75-b1d2-304bc7cbf3a1))
     (pin "2" (uuid b7348517-21f6-4cfa-af9b-09a63a649690))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "L2") (unit 1)
         )
@@ -2552,7 +2552,7 @@
     (pin "1" (uuid 7f14736d-629d-4ace-96c8-8ff14aaf71c0))
     (pin "2" (uuid 29628365-9844-4844-bc0b-df20f761ce8b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C19") (unit 1)
         )
@@ -2582,7 +2582,7 @@
     (pin "5" (uuid cfc1b0be-8dc0-4377-a9a3-473f803d3dbf))
     (pin "8" (uuid cf6c6960-7000-4b07-9417-8b15bc1ad1da))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "T1") (unit 1)
         )
@@ -2608,7 +2608,7 @@
     (pin "1" (uuid 2173ee44-ecd8-4138-bd91-d4be2f2cee51))
     (pin "2" (uuid 58a68c06-f488-45cd-bb50-ff60c558a157))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R21") (unit 1)
         )
@@ -2634,7 +2634,7 @@
     (pin "1" (uuid 1eb9e6f7-83e4-4405-9caf-a50f39631ab8))
     (pin "2" (uuid cde372a4-c544-4359-a8d1-cd7f2079f21b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "J4") (unit 1)
         )
@@ -2659,7 +2659,7 @@
     )
     (pin "1" (uuid b81dca1e-714d-4c0a-94bc-c8529c9d2753))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -2687,7 +2687,7 @@
     )
     (pin "1" (uuid d04c3995-c67e-4728-8292-62081688c55b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -2716,7 +2716,7 @@
     (pin "1" (uuid a14444f1-91fc-4826-8721-15ec5623976c))
     (pin "2" (uuid b980a9ab-dbc1-49c9-ad2b-7bdbc8830e5c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R36") (unit 1)
         )
@@ -2742,7 +2742,7 @@
     (pin "1" (uuid 880443fe-784b-4dbd-9c35-c7355d957eaa))
     (pin "2" (uuid f9fea903-8ec2-426f-9a5e-eb5414c333d8))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C21") (unit 1)
         )
@@ -2769,7 +2769,7 @@
     (pin "4" (uuid 76942e47-25ad-4189-8cba-a672397ff9bd))
     (pin "5" (uuid c4287d98-016b-42a3-95ed-65bcde95448f))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "Q1") (unit 1)
         )
@@ -2801,7 +2801,7 @@
     (pin "1" (uuid e373d1bf-e49f-4388-b65d-f19970c8092c))
     (pin "2" (uuid 3f0bde07-bc16-46a2-90b2-b1d47e07ad42))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D10") (unit 1)
         )
@@ -2827,7 +2827,7 @@
     (pin "1" (uuid c1926483-d9df-4d4b-ae93-b1af2e9163d8))
     (pin "2" (uuid 5acc8a37-3b4c-4242-b9de-6d75d653b819))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C13") (unit 1)
         )
@@ -2853,7 +2853,7 @@
     (pin "1" (uuid e2a2e4ee-c1e5-4b15-b900-69d2f9f1d18d))
     (pin "2" (uuid c33a20f5-d7ea-4bff-8113-21a3297741c9))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C17") (unit 1)
         )
@@ -2881,7 +2881,7 @@
     (pin "3" (uuid 30677556-bbe3-4032-9130-535a2143118c))
     (pin "4" (uuid 98053b9b-5f69-448a-a337-73b3117121ff))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "U8") (unit 1)
         )
@@ -2906,7 +2906,7 @@
     )
     (pin "1" (uuid ae7289cb-5efe-4342-bfa6-caa4d7877d36))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR069") (unit 1)
         )

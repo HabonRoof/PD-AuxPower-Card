@@ -1683,9 +1683,6 @@
   (junction (at 63.5 68.58) (diameter 0) (color 0 0 0 0)
     (uuid 2b2dc709-3468-455b-9f3b-56973a61b2c4)
   )
-  (junction (at 81.28 26.67) (diameter 0) (color 0 0 0 0)
-    (uuid 2d93c26e-77be-43ef-a977-fa70e2eacb0d)
-  )
   (junction (at 77.47 26.67) (diameter 0) (color 0 0 0 0)
     (uuid 377ead9e-f1ee-4dc2-9394-77d7f395e359)
   )
@@ -1722,8 +1719,8 @@
   (junction (at 72.39 26.67) (diameter 0) (color 0 0 0 0)
     (uuid 6073396b-ce71-45d4-bb79-002bd6091918)
   )
-  (junction (at 40.005 34.29) (diameter 0) (color 0 0 0 0)
-    (uuid 686791d3-b0b5-4e42-b548-403f5cf02241)
+  (junction (at 86.36 35.56) (diameter 0) (color 0 0 0 0)
+    (uuid 6a243c00-7107-45db-9136-5041eaabc605)
   )
   (junction (at 167.132 49.022) (diameter 0) (color 0 0 0 0)
     (uuid 6aa7e068-1bad-4b76-a657-91368efc4832)
@@ -1748,15 +1745,6 @@
   )
   (junction (at 53.975 73.66) (diameter 0) (color 0 0 0 0)
     (uuid 9b8500ed-7684-436a-bb48-34687e12703e)
-  )
-  (junction (at 72.39 29.21) (diameter 0) (color 0 0 0 0)
-    (uuid 9d2e3fe2-9ffb-4fe4-aa58-4230977f3923)
-  )
-  (junction (at 88.9 35.56) (diameter 0) (color 0 0 0 0)
-    (uuid a008f986-0b29-44c6-9f99-707b0196029f)
-  )
-  (junction (at 72.39 36.83) (diameter 0) (color 0 0 0 0)
-    (uuid a2d8b5ff-5763-47f7-8105-7228ed76587f)
   )
   (junction (at 35.56 107.315) (diameter 0) (color 0 0 0 0)
     (uuid a90d1914-c24f-4653-9a5e-4913fcc0b4e9)
@@ -1797,7 +1785,10 @@
   (junction (at 248.285 64.135) (diameter 0) (color 0 0 0 0)
     (uuid eecc5363-f246-4716-8f5a-bec537713093)
   )
-  (junction (at 88.9 26.67) (diameter 0) (color 0 0 0 0)
+  (junction (at 38.1 26.67) (diameter 0) (color 0 0 0 0)
+    (uuid f643b98d-df93-458e-a856-b438299057b2)
+  )
+  (junction (at 86.36 26.67) (diameter 0) (color 0 0 0 0)
     (uuid fcd53582-c595-476d-ba34-83b71047fefc)
   )
 
@@ -1824,11 +1815,15 @@
     (stroke (width 0) (type default))
     (uuid 032b4528-1b76-4225-9cf7-130e39f8580d)
   )
-  (wire (pts (xy 30.48 48.26) (xy 30.48 50.8))
+  (wire (pts (xy 26.67 45.72) (xy 26.67 48.26))
     (stroke (width 0) (type default))
     (uuid 03ecd9f4-1956-41ba-962b-2161268ebee9)
   )
-  (wire (pts (xy 88.9 33.02) (xy 88.9 35.56))
+  (wire (pts (xy 38.1 26.67) (xy 41.91 26.67))
+    (stroke (width 0) (type default))
+    (uuid 05def0cc-0a0c-455f-88fb-5d3906517df9)
+  )
+  (wire (pts (xy 86.36 33.02) (xy 86.36 35.56))
     (stroke (width 0) (type default))
     (uuid 07a9a76f-bd12-4408-ba59-04690fd230a2)
   )
@@ -1867,10 +1862,6 @@
   (wire (pts (xy 96.52 81.28) (xy 96.52 83.82))
     (stroke (width 0) (type default))
     (uuid 13f1d4ec-a5a7-47bb-bae5-9dc43edfd62f)
-  )
-  (wire (pts (xy 40.005 34.29) (xy 38.1 34.29))
-    (stroke (width 0) (type default))
-    (uuid 148a86a6-bd1d-442f-8f24-0099eec5f52a)
   )
   (wire (pts (xy 167.132 49.022) (xy 187.452 49.022))
     (stroke (width 0) (type default))
@@ -1952,6 +1943,10 @@
     (stroke (width 0) (type default))
     (uuid 2fdfb2ef-5c38-4dcc-b409-e02d3bde41f8)
   )
+  (wire (pts (xy 86.36 26.67) (xy 96.52 26.67))
+    (stroke (width 0) (type default))
+    (uuid 30ee9b5c-8706-4386-920d-a68aa026161e)
+  )
   (wire (pts (xy 185.547 76.962) (xy 187.452 76.962))
     (stroke (width 0) (type default))
     (uuid 317d526a-abb3-4aaf-b7d1-a9a5cad4cc9b)
@@ -1980,15 +1975,11 @@
     (stroke (width 0) (type default))
     (uuid 37419ad9-16e9-4934-b483-97cc4942f136)
   )
-  (wire (pts (xy 62.23 31.75) (xy 64.77 31.75))
-    (stroke (width 0) (type default))
-    (uuid 3792afb5-d3db-4d7c-ab64-9fac82ca7224)
-  )
   (wire (pts (xy 26.035 24.13) (xy 26.035 26.67))
     (stroke (width 0) (type default))
     (uuid 391d81a8-eac6-40ab-a829-1caee112ea0c)
   )
-  (wire (pts (xy 96.52 35.56) (xy 88.9 35.56))
+  (wire (pts (xy 86.36 35.56) (xy 96.52 35.56))
     (stroke (width 0) (type default))
     (uuid 3b963991-99b5-491e-b96f-a158c0d538e0)
   )
@@ -2020,17 +2011,13 @@
     (stroke (width 0) (type default))
     (uuid 40e7961d-814a-4e5c-8110-82fcff308940)
   )
-  (wire (pts (xy 41.91 29.21) (xy 40.005 29.21))
+  (wire (pts (xy 38.1 29.21) (xy 41.91 29.21))
     (stroke (width 0) (type default))
     (uuid 469dfff5-e4fa-416e-b867-2bb019710350)
   )
   (wire (pts (xy 27.94 107.315) (xy 35.56 107.315))
     (stroke (width 0) (type default))
     (uuid 48cbcb01-ba4e-4ec4-a964-e88983896099)
-  )
-  (wire (pts (xy 77.47 26.67) (xy 81.28 26.67))
-    (stroke (width 0) (type default))
-    (uuid 49b8a765-f3ca-4299-85e2-7862d3d54def)
   )
   (wire (pts (xy 242.189 83.693) (xy 242.189 86.868))
     (stroke (width 0) (type default))
@@ -2120,10 +2107,6 @@
     (stroke (width 0) (type default))
     (uuid 5a4891ff-3246-40b5-b927-28eee00bc398)
   )
-  (wire (pts (xy 81.28 26.67) (xy 88.9 26.67))
-    (stroke (width 0) (type default))
-    (uuid 5c205327-1772-4151-8e6d-c127a3a4d5da)
-  )
   (wire (pts (xy 141.605 30.48) (xy 141.605 33.655))
     (stroke (width 0) (type default))
     (uuid 5c2e1e40-a0e8-40a2-8355-14e6674bdf0e)
@@ -2131,10 +2114,6 @@
   (wire (pts (xy 53.975 73.66) (xy 63.5 73.66))
     (stroke (width 0) (type default))
     (uuid 5d567aea-1e06-40b0-addf-17a8aaae8693)
-  )
-  (wire (pts (xy 64.77 36.83) (xy 72.39 36.83))
-    (stroke (width 0) (type default))
-    (uuid 5ffab7ae-e164-4276-a742-24e87058fa8d)
   )
   (wire (pts (xy 212.852 56.642) (xy 215.392 56.642))
     (stroke (width 0) (type default))
@@ -2176,10 +2155,6 @@
     (stroke (width 0) (type default))
     (uuid 6e38b4dd-8d52-4c02-88bb-cf6b1a3f485e)
   )
-  (wire (pts (xy 40.005 29.21) (xy 40.005 34.29))
-    (stroke (width 0) (type default))
-    (uuid 7082f40d-3527-483c-9e04-e6a93588c140)
-  )
   (wire (pts (xy 96.52 33.02) (xy 96.52 35.56))
     (stroke (width 0) (type default))
     (uuid 71498278-2259-4910-8ca5-a34dee246cd5)
@@ -2191,6 +2166,10 @@
   (wire (pts (xy 24.13 147.32) (xy 26.67 147.32))
     (stroke (width 0) (type default))
     (uuid 752e0a09-f5ce-4760-a752-b3f3929e8d65)
+  )
+  (wire (pts (xy 77.47 26.67) (xy 86.36 26.67))
+    (stroke (width 0) (type default))
+    (uuid 755decf5-43ea-4b99-a390-39d1e7bd7088)
   )
   (wire (pts (xy 46.99 46.99) (xy 46.99 49.53))
     (stroke (width 0) (type default))
@@ -2240,7 +2219,7 @@
     (stroke (width 0) (type default))
     (uuid 841ced64-2b1b-4aee-ad77-e393b5fbb90c)
   )
-  (wire (pts (xy 81.28 35.56) (xy 88.9 35.56))
+  (wire (pts (xy 77.47 35.56) (xy 86.36 35.56))
     (stroke (width 0) (type default))
     (uuid 856adce6-168a-4bb4-8203-debc4d953768)
   )
@@ -2280,6 +2259,10 @@
     (stroke (width 0) (type default))
     (uuid 8caa999c-0ee3-45a8-83f5-c683922728e3)
   )
+  (wire (pts (xy 133.35 82.55) (xy 135.89 82.55))
+    (stroke (width 0) (type default))
+    (uuid 8cb17641-4aa6-4d18-af1a-348be8a053c6)
+  )
   (wire (pts (xy 200.152 42.037) (xy 200.152 43.942))
     (stroke (width 0) (type default))
     (uuid 903cc961-2982-4bce-a62b-cf0fbe271b3e)
@@ -2299,14 +2282,6 @@
   (wire (pts (xy 109.22 68.58) (xy 125.095 68.58))
     (stroke (width 0) (type default))
     (uuid 95ddf813-f250-4178-bb88-fa71569cf9c2)
-  )
-  (wire (pts (xy 64.77 31.75) (xy 64.77 36.83))
-    (stroke (width 0) (type default))
-    (uuid 96960b90-1ced-4b36-8386-7b398fb2babc)
-  )
-  (wire (pts (xy 88.9 26.67) (xy 96.52 26.67))
-    (stroke (width 0) (type default))
-    (uuid 9982ac10-059b-46f2-91f0-7776416979a7)
   )
   (wire (pts (xy 242.189 74.168) (xy 242.189 76.073))
     (stroke (width 0) (type default))
@@ -2336,19 +2311,11 @@
     (stroke (width 0) (type default))
     (uuid 9dce60d3-2ec9-43a7-aa67-b740337241f4)
   )
-  (wire (pts (xy 133.35 82.55) (xy 135.89 82.55))
-    (stroke (width 0) (type default))
-    (uuid 9de9f5ea-da75-44ef-b347-f85fa73d36e8)
-  )
-  (wire (pts (xy 72.39 29.21) (xy 72.39 30.48))
-    (stroke (width 0) (type default))
-    (uuid a2725fb9-6774-4ea2-8da1-764de6256896)
-  )
   (wire (pts (xy 259.08 24.13) (xy 261.62 24.13))
     (stroke (width 0) (type default))
     (uuid a54240ed-0925-4d40-8832-780f657b3fb6)
   )
-  (wire (pts (xy 26.035 26.67) (xy 41.91 26.67))
+  (wire (pts (xy 26.035 26.67) (xy 38.1 26.67))
     (stroke (width 0) (type default))
     (uuid a5c38cc7-5fe3-448a-ae3e-3eed0f021881)
   )
@@ -2372,21 +2339,25 @@
     (stroke (width 0) (type default))
     (uuid ac70c0e4-5215-4924-a4e0-c53cceb793dc)
   )
+  (wire (pts (xy 38.1 29.21) (xy 38.1 26.67))
+    (stroke (width 0) (type default))
+    (uuid ad51ed28-15bb-45e3-9a8b-89b3a855321b)
+  )
   (wire (pts (xy 262.89 52.07) (xy 268.605 52.07))
     (stroke (width 0) (type default))
     (uuid adc6f754-7ce7-4648-95e4-19f9383bb02f)
   )
-  (wire (pts (xy 88.9 26.67) (xy 88.9 27.94))
+  (wire (pts (xy 133.35 86.36) (xy 135.89 86.36))
+    (stroke (width 0) (type default))
+    (uuid af5e093a-3907-49b7-9bb0-931b21f14e2b)
+  )
+  (wire (pts (xy 86.36 26.67) (xy 86.36 27.94))
     (stroke (width 0) (type default))
     (uuid afa3d3de-2100-48d4-b3c0-f76e7021ac8e)
   )
   (wire (pts (xy 233.426 125.603) (xy 233.426 128.143))
     (stroke (width 0) (type default))
     (uuid b26154d5-7a10-4c5e-8720-f97eea9b4fbb)
-  )
-  (wire (pts (xy 72.39 36.83) (xy 72.39 38.1))
-    (stroke (width 0) (type default))
-    (uuid b43e42c8-cbaf-413b-bf3a-023a4e6fccf5)
   )
   (wire (pts (xy 248.285 54.61) (xy 250.825 54.61))
     (stroke (width 0) (type default))
@@ -2420,15 +2391,11 @@
     (stroke (width 0) (type default))
     (uuid bde11f9f-c829-4bbc-9db0-5ef3f682e306)
   )
-  (wire (pts (xy 72.39 43.18) (xy 72.39 45.72))
-    (stroke (width 0) (type default))
-    (uuid bead3963-80e3-43c0-ab6c-e18f0118886c)
-  )
   (wire (pts (xy 241.3 49.53) (xy 241.3 46.99))
     (stroke (width 0) (type default))
     (uuid bfa12f5c-326b-465f-93d5-3fa71c43a958)
   )
-  (wire (pts (xy 41.91 34.29) (xy 40.005 34.29))
+  (wire (pts (xy 38.1 34.29) (xy 41.91 34.29))
     (stroke (width 0) (type default))
     (uuid c0bd5685-65eb-4ed6-a355-644709553a6a)
   )
@@ -2452,17 +2419,13 @@
     (stroke (width 0) (type default))
     (uuid c3dd37dc-459f-4fa3-b40e-1138ab48565e)
   )
-  (wire (pts (xy 81.28 26.67) (xy 81.28 27.94))
+  (wire (pts (xy 77.47 26.67) (xy 77.47 27.94))
     (stroke (width 0) (type default))
     (uuid c3e6c510-414f-4311-ab40-b21760491240)
   )
   (wire (pts (xy 273.05 34.29) (xy 273.05 29.21))
     (stroke (width 0) (type default))
     (uuid c5c01679-70fc-4eb3-8b0a-94559f01fa1a)
-  )
-  (wire (pts (xy 72.39 35.56) (xy 72.39 36.83))
-    (stroke (width 0) (type default))
-    (uuid c8ee083f-2436-4759-8483-85be4d605c7c)
   )
   (wire (pts (xy 273.05 29.21) (xy 273.685 29.21))
     (stroke (width 0) (type default))
@@ -2504,7 +2467,7 @@
     (stroke (width 0) (type default))
     (uuid dcd13af4-ded6-4cbe-8fcc-a99657375910)
   )
-  (wire (pts (xy 81.28 33.02) (xy 81.28 35.56))
+  (wire (pts (xy 77.47 33.02) (xy 77.47 35.56))
     (stroke (width 0) (type default))
     (uuid ddae28ee-c138-4464-9cb5-8b17f2be4329)
   )
@@ -2544,10 +2507,6 @@
     (stroke (width 0) (type default))
     (uuid e5d80b80-86f6-45a8-8821-9918f7a3a840)
   )
-  (wire (pts (xy 133.35 86.36) (xy 135.89 86.36))
-    (stroke (width 0) (type default))
-    (uuid e5e1dac7-a2c9-4f29-817a-a5637abcfaa2)
-  )
   (wire (pts (xy 177.292 29.972) (xy 182.372 29.972))
     (stroke (width 0) (type default))
     (uuid e681a8f3-c550-49a2-9ca2-5fb55f60effa)
@@ -2567,6 +2526,10 @@
   (wire (pts (xy 161.417 49.022) (xy 167.132 49.022))
     (stroke (width 0) (type default))
     (uuid ebe05248-8f5a-4627-b934-f790f92b1ba8)
+  )
+  (wire (pts (xy 62.23 31.75) (xy 72.39 31.75))
+    (stroke (width 0) (type default))
+    (uuid ec1acdef-0266-48e2-983f-02e94fae73ad)
   )
   (wire (pts (xy 76.2 68.58) (xy 83.82 68.58))
     (stroke (width 0) (type default))
@@ -2615,6 +2578,10 @@
   (wire (pts (xy 248.285 54.61) (xy 248.285 56.515))
     (stroke (width 0) (type default))
     (uuid f81a20d8-4b0f-479b-adda-62c21f92c1ad)
+  )
+  (wire (pts (xy 72.39 35.56) (xy 72.39 31.75))
+    (stroke (width 0) (type default))
+    (uuid f8c3e31c-9370-4958-8476-a87307be3770)
   )
   (wire (pts (xy 212.852 71.882) (xy 215.392 71.882))
     (stroke (width 0) (type default))
@@ -2805,10 +2772,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "I2C1_SCL" (shape input) (at 133.35 86.36 180) (fields_autoplaced)
+  (global_label "I2C1_SCL" (shape input) (at 133.35 82.55 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 8f9afa70-770f-4e8f-8810-89f79ee96b0b)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.6752 86.36 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.6752 82.55 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2931,10 +2898,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "I2C1_SDA" (shape input) (at 133.35 82.55 180) (fields_autoplaced)
+  (global_label "I2C1_SDA" (shape input) (at 133.35 86.36 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid f2a35e96-8925-4bc6-9a9f-bdc6b9b8f510)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.6147 82.55 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.6147 86.36 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2971,7 +2938,7 @@
     (pin "1" (uuid e0259691-68e3-482a-8184-87d4759a952f))
     (pin "2" (uuid 218535f9-faef-428b-8b9e-8d0681b8e0ec))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "FB1") (unit 1)
         )
@@ -2997,7 +2964,7 @@
     (pin "1" (uuid faa80975-6ef0-4886-963b-a197a6aa0fb2))
     (pin "2" (uuid 1a79e900-4a23-459a-aea2-a0537a190197))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R14") (unit 1)
         )
@@ -3022,7 +2989,7 @@
     )
     (pin "1" (uuid bc968683-ef41-4c78-a307-1b5638b297c3))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR015") (unit 1)
         )
@@ -3048,7 +3015,7 @@
     (pin "1" (uuid a55827cf-0f30-44d1-b821-2043df5a3fe3))
     (pin "2" (uuid 89814b81-2032-4eac-b591-bc5bab4e6ee4))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R15") (unit 1)
         )
@@ -3073,7 +3040,7 @@
     )
     (pin "1" (uuid 12930d88-ae1a-465d-9193-3e940bcb9dfd))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR049") (unit 1)
         )
@@ -3081,24 +3048,24 @@
     )
   )
 
-  (symbol (lib_id "power:PWR_FLAG") (at 30.48 48.26 0) (unit 1)
+  (symbol (lib_id "power:PWR_FLAG") (at 26.67 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2457f6c4-4274-45d3-9f00-004a6f36c230)
-    (property "Reference" "#FLG01" (at 30.48 46.355 0)
+    (property "Reference" "#FLG01" (at 26.67 43.815 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "PWR_FLAG" (at 30.48 44.45 0)
+    (property "Value" "PWR_FLAG" (at 26.67 41.91 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 30.48 48.26 0)
+    (property "Footprint" "" (at 26.67 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 30.48 48.26 0)
+    (property "Datasheet" "~" (at 26.67 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid a4d83b88-86bf-4c15-927d-f22e0dbca91f))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#FLG01") (unit 1)
         )
@@ -3124,7 +3091,7 @@
     (pin "1" (uuid df36c80a-1ba3-4423-8870-61f0c5391691))
     (pin "2" (uuid 4823a710-8fb4-43aa-8945-ff4287370f5a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "D21") (unit 1)
         )
@@ -3150,7 +3117,7 @@
     (pin "1" (uuid 1cdbfe15-7d14-4008-b682-3f77035fa0d7))
     (pin "2" (uuid d02df5ab-3751-4e88-bcc2-b9f05eb81e8a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C9") (unit 1)
         )
@@ -3175,7 +3142,7 @@
     )
     (pin "1" (uuid 8abd87f1-642f-4e5b-add2-fd7b635316bc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR013") (unit 1)
         )
@@ -3186,10 +3153,10 @@
   (symbol (lib_id "Device:R_Small") (at 242.189 89.408 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2c586fa5-bac2-459c-ae96-f414a37878fa)
-    (property "Reference" "R25" (at 243.6876 88.7643 0)
+    (property "Reference" "R25" (at 243.84 88.138 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "499" (at 243.6876 90.6853 0)
+    (property "Value" "2k" (at 243.84 90.678 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 242.189 89.408 0)
@@ -3201,7 +3168,7 @@
     (pin "1" (uuid 9cf738cd-ec7c-48b1-bedf-ecf2a6b10f2d))
     (pin "2" (uuid 43da2707-36d7-47b0-804b-309907dd32eb))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R25") (unit 1)
         )
@@ -3232,7 +3199,7 @@
     (pin "3" (uuid 3aca69e2-4bf4-4ead-b743-71249764dced))
     (pin "4" (uuid df74511b-e024-4acf-83f6-ec2a90a003f8))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "J1") (unit 1)
         )
@@ -3258,7 +3225,7 @@
     (pin "1" (uuid 14225b74-18e0-4e9a-80d0-4d805d9d868b))
     (pin "2" (uuid 2229902e-8412-4760-a538-03f24b7f2d2c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D14") (unit 1)
         )
@@ -3287,7 +3254,7 @@
     (pin "1" (uuid b37bb322-237b-4b9d-b93a-8e989c72a581))
     (pin "2" (uuid 78961ef6-328b-49b0-99ea-7f8bd67e4a87))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "D19") (unit 1)
         )
@@ -3298,10 +3265,10 @@
   (symbol (lib_id "Device:R_Small") (at 251.079 89.408 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3281c448-abac-4b86-8497-23d779551198)
-    (property "Reference" "R26" (at 252.5776 88.7643 0)
+    (property "Reference" "R26" (at 252.73 88.138 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "499" (at 252.5776 90.6853 0)
+    (property "Value" "2k" (at 252.73 90.678 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 251.079 89.408 0)
@@ -3313,7 +3280,7 @@
     (pin "1" (uuid 5e79f141-40f1-43af-bcc1-1e98777c222d))
     (pin "2" (uuid 5fb7a987-0534-4dc4-9f19-e4b4f4d454bc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R26") (unit 1)
         )
@@ -3324,24 +3291,24 @@
     )
   )
 
-  (symbol (lib_id "power:+3V3") (at 88.9 26.67 0) (unit 1)
+  (symbol (lib_id "power:+3V3") (at 86.36 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 354b0dac-8c97-4b78-9b3e-4f9e3a628da6)
-    (property "Reference" "#PWR06" (at 88.9 30.48 0)
+    (property "Reference" "#PWR06" (at 86.36 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+3V3" (at 88.9 22.86 0)
+    (property "Value" "+3V3" (at 86.36 22.86 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 88.9 26.67 0)
+    (property "Footprint" "" (at 86.36 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 88.9 26.67 0)
+    (property "Datasheet" "" (at 86.36 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 65ebd075-02ff-41aa-bdfb-c985dba1c03f))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR06") (unit 1)
         )
@@ -3367,7 +3334,7 @@
     (pin "1" (uuid ddedb5ce-228a-4b15-9051-8849c2c56dda))
     (pin "2" (uuid 8faf2329-59aa-47f7-9b37-0d63b0e36600))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C12") (unit 1)
         )
@@ -3392,7 +3359,7 @@
     )
     (pin "1" (uuid 58ba1da7-495e-4bc5-b54c-a4b771a46251))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR035") (unit 1)
         )
@@ -3418,7 +3385,7 @@
     (pin "1" (uuid 565e72e8-0e3b-43e7-a3be-e9148b18b1af))
     (pin "2" (uuid b4b03892-7862-4b5e-802b-abe181e49135))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R7") (unit 1)
         )
@@ -3443,7 +3410,7 @@
     )
     (pin "1" (uuid dc06b052-99ac-4baf-94d0-5d0316014aad))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR034") (unit 1)
         )
@@ -3468,7 +3435,7 @@
     )
     (pin "1" (uuid eea3c524-d98e-4618-aeb9-e3c7ce580e62))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR026") (unit 1)
         )
@@ -3496,7 +3463,7 @@
     (pin "3" (uuid 9272d97e-a3d3-4514-9939-97a1867eb0fc))
     (pin "4" (uuid 4c1a6318-8fdf-435e-bfef-a97bf38160e2))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "J2") (unit 1)
         )
@@ -3521,7 +3488,7 @@
     )
     (pin "1" (uuid f7380f52-60c2-4256-af37-a1f80afb298b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR05") (unit 1)
         )
@@ -3547,7 +3514,7 @@
     (pin "1" (uuid 487199f8-6509-42d5-98ae-73b1f7160bb1))
     (pin "2" (uuid 8c8b3361-bc46-4422-8bd3-4bbb0a70e077))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C7") (unit 1)
         )
@@ -3572,7 +3539,7 @@
     )
     (pin "1" (uuid c38bb0b7-141e-43ca-96e8-34795cdbdcd6))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR01") (unit 1)
         )
@@ -3598,7 +3565,7 @@
     (pin "1" (uuid b31eacdc-f89a-4375-9394-2c74c71b8b6a))
     (pin "2" (uuid 2ea98455-7fb6-4e40-87d4-e35522e03a1a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C10") (unit 1)
         )
@@ -3623,7 +3590,7 @@
     )
     (pin "1" (uuid 55b1524d-f021-435a-8eda-a035b30a5b87))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR02") (unit 1)
         )
@@ -3631,25 +3598,25 @@
     )
   )
 
-  (symbol (lib_id "Device:C_Small") (at 81.28 30.48 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+  (symbol (lib_id "Device:C_Small") (at 77.47 30.48 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 5195aaf1-7568-48c3-b589-b2efecbc7710)
-    (property "Reference" "C2" (at 83.6041 29.8426 0)
+    (property "Reference" "C2" (at 79.7941 29.8426 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10u/6.3V" (at 83.6041 31.7636 0)
+    (property "Value" "10u/6.3V" (at 76.835 33.655 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 81.28 30.48 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 77.47 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 81.28 30.48 0)
+    (property "Datasheet" "~" (at 77.47 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 25153c43-b8eb-4737-8fb1-57d7adba443f))
     (pin "2" (uuid d8f8ae89-110a-4e27-9c84-38add24519cc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C2") (unit 1)
         )
@@ -3675,7 +3642,7 @@
     (pin "1" (uuid a55f83d4-53a2-408b-bea4-b23f7b909613))
     (pin "2" (uuid 825e33ef-1b5f-4d5a-9e8c-f758ee28edd1))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C6") (unit 1)
         )
@@ -3700,7 +3667,7 @@
     )
     (pin "1" (uuid 97b3c4dc-7aa1-4c62-a1e8-25872780a238))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR031") (unit 1)
         )
@@ -3711,10 +3678,10 @@
   (symbol (lib_id "Device:R_Small") (at 259.969 89.408 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5c09c356-12e7-4e66-beca-6a601c4bb2c6)
-    (property "Reference" "R27" (at 261.4676 88.7643 0)
+    (property "Reference" "R27" (at 261.62 88.138 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "499" (at 261.4676 90.6853 0)
+    (property "Value" "2k" (at 261.62 90.678 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 259.969 89.408 0)
@@ -3726,7 +3693,7 @@
     (pin "1" (uuid 8bf324dc-320a-437e-8766-687cbb6eb5e7))
     (pin "2" (uuid ead501f2-9825-42e0-9c79-c3742d124ea4))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R27") (unit 1)
         )
@@ -3754,7 +3721,7 @@
     )
     (pin "1" (uuid 056e9a57-10a1-47b2-8cf0-288f24ba96c6))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR046") (unit 1)
         )
@@ -3789,7 +3756,7 @@
     (pin "8" (uuid 0822765c-6a26-4e23-a133-3d5b3d7fab7f))
     (pin "9" (uuid b60a8f7a-1840-4546-a77e-f32e569e845b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "U3") (unit 1)
         )
@@ -3814,7 +3781,7 @@
     )
     (pin "1" (uuid 8c13171d-1c52-40cb-90a8-aa9729860ea2))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR029") (unit 1)
         )
@@ -3840,7 +3807,7 @@
     (pin "1" (uuid 5222aefa-5249-4b48-8b71-8552f3cdbf72))
     (pin "2" (uuid fe14456e-e699-4d64-ad70-75be722a486b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "D2") (unit 1)
         )
@@ -3848,24 +3815,24 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 88.9 35.56 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 86.36 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6ea588fb-0ee9-48f4-8d8f-616bebfa8c7e)
-    (property "Reference" "#PWR010" (at 88.9 41.91 0)
+    (property "Reference" "#PWR010" (at 86.36 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 88.9 40.64 0)
+    (property "Value" "GND" (at 86.36 40.64 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 88.9 35.56 0)
+    (property "Footprint" "" (at 86.36 35.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 88.9 35.56 0)
+    (property "Datasheet" "" (at 86.36 35.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 963b8886-c5fb-485f-b25f-5837991461de))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR010") (unit 1)
         )
@@ -3891,35 +3858,9 @@
     (pin "1" (uuid a9906cf3-6f27-4449-8819-6147ca4d158e))
     (pin "2" (uuid dc800ab9-9649-4a06-a792-6686e96cb468))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R_Small") (at 72.39 40.64 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 736c6d48-7af5-4b3f-838f-f9aa3dddfadb)
-    (property "Reference" "R6" (at 74.93 40.005 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "51k" (at 74.93 42.545 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 72.39 40.64 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 72.39 40.64 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 97584ecd-6a6a-4009-a614-c3eeced79bed))
-    (pin "2" (uuid 96a1773b-e609-469a-98e4-6493b21d1d58))
-    (instances
-      (project "TypeC_Digital_Converter"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
-          (reference "R6") (unit 1)
         )
       )
     )
@@ -3942,7 +3883,7 @@
     )
     (pin "1" (uuid 4608a577-37d2-4956-ad50-10f026ba6e01))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR09") (unit 1)
         )
@@ -3968,7 +3909,7 @@
     (pin "1" (uuid 1e6e58e9-727c-4bd9-b5bc-7eceb539f7d1))
     (pin "2" (uuid 336388cd-d105-4ff5-b131-75adc8cc0a8d))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D14") (unit 1)
         )
@@ -3997,7 +3938,7 @@
     (pin "1" (uuid f52f10a6-1196-4439-ae41-7ba4b5d22ebd))
     (pin "2" (uuid 914ef390-c9be-423f-b46b-c65c203c7faa))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "L1") (unit 1)
         )
@@ -4022,7 +3963,7 @@
     )
     (pin "1" (uuid cd3654c9-e0da-4dca-ab76-efc8f69fe463))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR036") (unit 1)
         )
@@ -4051,7 +3992,7 @@
     (pin "4" (uuid 21bd6230-9e3d-4a4d-8d75-4a8098029eb7))
     (pin "5" (uuid 987cbbf4-d769-48c2-8c82-cbadeb53aabf))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "U4") (unit 1)
         )
@@ -4076,7 +4017,7 @@
     )
     (pin "1" (uuid d6885bb2-4da4-443f-ad99-959755604f4d))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR07") (unit 1)
         )
@@ -4101,7 +4042,7 @@
     )
     (pin "1" (uuid 82748ae3-98ae-4a1a-8779-550b32a7d716))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR032") (unit 1)
         )
@@ -4126,7 +4067,7 @@
     )
     (pin "1" (uuid 90b403d4-99be-4c8e-b473-15922b8dc0d1))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR014") (unit 1)
         )
@@ -4151,7 +4092,7 @@
     )
     (pin "1" (uuid f5fb46df-8d38-4301-945c-4894a3fb9bcc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR021") (unit 1)
         )
@@ -4177,7 +4118,7 @@
     (pin "1" (uuid 8fff82bf-68e0-47f5-9a5b-a4c95507345d))
     (pin "2" (uuid a6f28678-62ef-41f4-a299-e65979312d86))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D11") (unit 1)
         )
@@ -4205,7 +4146,7 @@
     )
     (pin "1" (uuid 3a812bf7-c176-4308-b8e6-dad28692a73c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR052") (unit 1)
         )
@@ -4230,7 +4171,7 @@
     )
     (pin "1" (uuid fe76e911-32e4-4b47-be9f-715605d1e3dc))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR041") (unit 1)
         )
@@ -4255,35 +4196,9 @@
     )
     (pin "1" (uuid 57f38552-795c-42ab-a8d7-765a12e58701))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR011") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R_Small") (at 72.39 33.02 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 952cd112-10af-4f30-9b40-959fcd43ec2f)
-    (property "Reference" "R1" (at 74.93 32.385 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "160k" (at 74.93 34.925 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 72.39 33.02 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 72.39 33.02 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 30863713-fd58-4fc9-abf0-6b0677c16017))
-    (pin "2" (uuid 437b7d1c-7066-4f66-a769-398c5bfa8a9b))
-    (instances
-      (project "TypeC_Digital_Converter"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
-          (reference "R1") (unit 1)
         )
       )
     )
@@ -4307,7 +4222,7 @@
     (pin "1" (uuid 8a60260b-a782-42d5-bc08-4b0789606d30))
     (pin "2" (uuid f9faa1cc-c7ad-4edf-aa8c-754742e5d47c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D14") (unit 1)
         )
@@ -4336,7 +4251,7 @@
     (pin "1" (uuid 23db243f-5ccd-4194-b5b2-880f3239b054))
     (pin "2" (uuid 3a1b5882-a420-4d6d-a824-ac2874523b07))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R8") (unit 1)
         )
@@ -4363,7 +4278,7 @@
     (pin "2" (uuid feaa1541-f7af-45d6-a6da-92214ddbede4))
     (pin "3" (uuid 3f4a4a34-fd40-4b52-8e8e-9e326fc309cf))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "SW2") (unit 1)
         )
@@ -4389,7 +4304,7 @@
     (pin "1" (uuid 4336dd91-b186-4b47-98bf-cd95ea024b4a))
     (pin "2" (uuid eea29ca1-af51-4f1b-905f-1b8ecced84c6))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "D4") (unit 1)
         )
@@ -4415,7 +4330,7 @@
     (pin "1" (uuid 69606fc6-ca55-4ae0-89fd-20302eabc010))
     (pin "2" (uuid 133017ef-c70e-4477-8adb-226bf7c85cea))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C5") (unit 1)
         )
@@ -4440,7 +4355,7 @@
     )
     (pin "1" (uuid ebd3b9de-c8cd-4a6e-affd-4c07f4a9531a))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR019") (unit 1)
         )
@@ -4497,7 +4412,7 @@
     (pin "8" (uuid 38ee08ad-4c96-436d-b13c-b6feb51658e6))
     (pin "9" (uuid b1f78fa9-8ae9-47ce-9eac-c9cda76acee2))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "U12") (unit 1)
         )
@@ -4523,7 +4438,7 @@
     (pin "1" (uuid 553c976d-3dad-4a0a-8868-b8e19e2a7f15))
     (pin "2" (uuid c1feaa42-f1ca-4d1d-af5a-9f9eac95fa0b))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R9") (unit 1)
         )
@@ -4534,10 +4449,10 @@
   (symbol (lib_id "Device:R_Small") (at 121.285 34.925 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a8fe38ef-7634-4f8a-ab39-02ecb4a181da)
-    (property "Reference" "R5" (at 122.7836 34.2813 0)
+    (property "Reference" "R5" (at 123.19 33.655 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "1k" (at 122.7836 36.2023 0)
+    (property "Value" "2k" (at 123.19 36.195 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 121.285 34.925 0)
@@ -4549,7 +4464,7 @@
     (pin "1" (uuid 7fbe4688-1c85-4341-8d9f-6873efd99251))
     (pin "2" (uuid eaf5edc6-869e-4ced-8851-cf3dc0a963c5))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R5") (unit 1)
         )
@@ -4574,7 +4489,7 @@
     )
     (pin "1" (uuid bdba391d-59c6-4267-91ae-97a1ec481a71))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR033") (unit 1)
         )
@@ -4582,24 +4497,24 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 30.48 50.8 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 26.67 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid adc517fb-a8e3-4250-b6c2-616469ee0319)
-    (property "Reference" "#PWR020" (at 30.48 57.15 0)
+    (property "Reference" "#PWR020" (at 26.67 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 30.48 55.88 0)
+    (property "Value" "GND" (at 26.67 53.34 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 30.48 50.8 0)
+    (property "Footprint" "" (at 26.67 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 30.48 50.8 0)
+    (property "Datasheet" "" (at 26.67 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 28e71acd-0115-4fd7-b832-0c56df75a8b0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR020") (unit 1)
         )
@@ -4624,7 +4539,7 @@
     )
     (pin "1" (uuid 63de50c0-32b6-4e7d-b834-5bd53332e752))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR023") (unit 1)
         )
@@ -4649,7 +4564,7 @@
     )
     (pin "1" (uuid 7bf47802-b4dc-41ec-8d01-8cfd57d40667))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR045") (unit 1)
         )
@@ -4675,7 +4590,7 @@
     (pin "1" (uuid 416dfbd5-fde6-45ef-a1eb-79fbfae6875d))
     (pin "2" (uuid c52249c3-a905-4941-88fc-1bb36933e2bb))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "R2") (unit 1)
         )
@@ -4716,7 +4631,7 @@
     (pin "B9" (uuid d27b5aae-8d6b-45b7-a0cc-eba13431a3b6))
     (pin "S1" (uuid d9b45548-a9f1-44b6-b30b-e68c53443152))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "J3") (unit 1)
         )
@@ -4741,7 +4656,7 @@
     )
     (pin "1" (uuid c25e53d2-48b3-47b8-89ce-46c4beb261c0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR050") (unit 1)
         )
@@ -4767,7 +4682,7 @@
     (pin "1" (uuid eeb3042b-d817-44ea-9f35-192b017e5e87))
     (pin "2" (uuid c43dd06e-80a5-47e9-80fc-ca66775bb8be))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "SW1") (unit 1)
         )
@@ -4792,7 +4707,7 @@
     )
     (pin "1" (uuid a04f5c57-ffaf-4bff-aa63-80112f35f590))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR012") (unit 1)
         )
@@ -4818,9 +4733,34 @@
     (pin "1" (uuid 18ea9e92-41d3-4522-b5e2-7811d8920a61))
     (pin "2" (uuid 9874382e-5b3e-416e-bee6-f241d2118b91))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "D3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 72.39 35.56 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid c3924f29-74fc-4dac-a8a5-a171409b9172)
+    (property "Reference" "#PWR018" (at 72.39 41.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 72.39 40.64 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 72.39 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 72.39 35.56 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 51a4a83d-9fe3-48ca-b61d-e273f1ee6fc7))
+    (instances
+      (project "PD-AuxPower-Card"
+        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -4844,7 +4784,7 @@
     (pin "1" (uuid fac3c532-cfb0-4cc3-9e12-13d74850a8e9))
     (pin "2" (uuid 44736bb9-c691-4896-b80b-6a976ddf90df))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D12") (unit 1)
         )
@@ -4886,7 +4826,7 @@
     (pin "8" (uuid 8444df3b-b9b0-490a-84e8-bfff31e58328))
     (pin "9" (uuid 472fe772-ffe3-4193-b0a0-56e509590e4d))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "U2") (unit 1)
         )
@@ -4911,7 +4851,7 @@
     )
     (pin "1" (uuid c2e231d3-b3eb-4be1-9e82-a84ae0d40da1))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#FLG02") (unit 1)
         )
@@ -4936,7 +4876,7 @@
     )
     (pin "1" (uuid a3a0bab0-b691-4631-8887-aaae4b98025e))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR03") (unit 1)
         )
@@ -4961,7 +4901,7 @@
     )
     (pin "1" (uuid d4b62f64-d782-4f7f-a373-e21928e76412))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR028") (unit 1)
         )
@@ -4986,7 +4926,7 @@
     )
     (pin "1" (uuid 26dc0253-60e5-4af8-b5c3-4ed98dac6df4))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR027") (unit 1)
         )
@@ -5012,7 +4952,7 @@
     (pin "1" (uuid e604ab28-dbf9-42d5-b559-34b9c6a2ce23))
     (pin "2" (uuid 310ada30-f1dc-490f-81c9-05ff2917e1eb))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D14") (unit 1)
         )
@@ -5040,7 +4980,7 @@
     )
     (pin "1" (uuid 2dacbf2c-cace-43eb-a8e3-b3302a5d9a89))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR017") (unit 1)
         )
@@ -5065,7 +5005,7 @@
     )
     (pin "1" (uuid a297bf1b-1a23-42b1-9643-2ab636cab080))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR040") (unit 1)
         )
@@ -5090,7 +5030,7 @@
     )
     (pin "1" (uuid cba2123a-e8c8-43fa-b95e-480b206c415c))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR08") (unit 1)
         )
@@ -5115,7 +5055,7 @@
     )
     (pin "1" (uuid 62fdde8e-8e03-4fa8-953a-0938a1e0b4b0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR024") (unit 1)
         )
@@ -5141,7 +5081,7 @@
     (pin "1" (uuid 00eadb00-1bcc-49c3-b0da-989d6e690491))
     (pin "2" (uuid d7f15e7d-a9be-4486-b8bd-f379a6a6cd54))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C11") (unit 1)
         )
@@ -5167,7 +5107,7 @@
     (pin "1" (uuid 5a0148b4-6984-4ed9-ba8a-2eec06824b88))
     (pin "2" (uuid 70ed9b2c-155e-4d29-9524-859fc8a08e41))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C4") (unit 1)
         )
@@ -5192,7 +5132,7 @@
     )
     (pin "1" (uuid 40125f1d-5715-4fe1-ac2c-4ec9424f4667))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR016") (unit 1)
         )
@@ -5217,7 +5157,7 @@
     )
     (pin "1" (uuid ddbd1f4e-08d7-45d4-83bf-16438399ea70))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "TP2") (unit 1)
         )
@@ -5242,7 +5182,7 @@
     )
     (pin "1" (uuid 23069e4c-ff1d-4aaa-aa0d-cdc965c44821))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR04") (unit 1)
         )
@@ -5268,7 +5208,7 @@
     (pin "1" (uuid 811d22d0-3423-43e5-97f5-6ec97ef00e30))
     (pin "2" (uuid 01c31c9c-1b15-466c-b13a-1a87a648d7a5))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D13") (unit 1)
         )
@@ -5296,7 +5236,7 @@
     )
     (pin "1" (uuid 41b269ab-77ac-4a96-b456-828865357c41))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR030") (unit 1)
         )
@@ -5307,10 +5247,10 @@
   (symbol (lib_id "Device:R_Small") (at 268.859 89.408 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ec36e8a9-dfc6-41bc-a1ce-2c72e58a3710)
-    (property "Reference" "R28" (at 270.3576 88.7643 0)
+    (property "Reference" "R28" (at 270.51 88.138 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "499" (at 270.3576 90.6853 0)
+    (property "Value" "2k" (at 270.51 90.678 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 268.859 89.408 0)
@@ -5322,7 +5262,7 @@
     (pin "1" (uuid b43f06fa-c465-4479-a639-bdbb6aa5b4c5))
     (pin "2" (uuid 2a877173-71f9-41b4-b6b1-fbb4a04afc68))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "R28") (unit 1)
         )
@@ -5350,34 +5290,9 @@
     )
     (pin "1" (uuid 270986b6-09fc-49e3-84e2-2e1e87e13f0d))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR022") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 72.39 45.72 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid f3a1d69e-a7d4-446b-b854-b8b37a298af1)
-    (property "Reference" "#PWR018" (at 72.39 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 72.39 50.8 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 72.39 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 72.39 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9f6de12a-7674-4d53-98f1-ca5f26fc3d7a))
-    (instances
-      (project "TypeC_Digital_Converter"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
-          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -5402,7 +5317,7 @@
     (pin "2" (uuid a3c04d6e-c12c-42d6-b703-e726e6f1370a))
     (pin "3" (uuid b1c2eb04-768b-432d-be4a-1c712d0768c0))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "SW3") (unit 1)
         )
@@ -5410,25 +5325,25 @@
     )
   )
 
-  (symbol (lib_id "Device:C_Small") (at 88.9 30.48 0) (unit 1)
+  (symbol (lib_id "Device:C_Small") (at 86.36 30.48 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f4af49a1-2d8b-4514-9771-4cac2d3a40c1)
-    (property "Reference" "C3" (at 91.44 29.8513 0)
+    (property "Reference" "C3" (at 88.9 29.8513 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10u/6.3V" (at 91.44 32.3913 0)
+    (property "Value" "10u/6.3V" (at 87.63 33.655 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 88.9 30.48 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 86.36 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 88.9 30.48 0)
+    (property "Datasheet" "~" (at 86.36 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 9e7daf16-00d9-49d3-a22b-0d860b7e2579))
     (pin "2" (uuid bbc32f99-f2d4-4144-8fb2-ac605a54da67))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C3") (unit 1)
         )
@@ -5436,24 +5351,24 @@
     )
   )
 
-  (symbol (lib_id "Connector:TestPoint") (at 77.47 26.67 0) (unit 1)
+  (symbol (lib_id "Connector:TestPoint") (at 72.39 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f90bf467-1b00-49db-a61a-df311f9638e4)
-    (property "Reference" "TP1" (at 78.867 22.7243 0)
+    (property "Reference" "TP1" (at 73.787 22.7243 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "TestPoint" (at 78.867 24.6453 0)
+    (property "Value" "TestPoint" (at 73.787 24.6453 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 82.55 26.67 0)
+    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 77.47 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 82.55 26.67 0)
+    (property "Datasheet" "~" (at 77.47 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid dcef95e7-af3d-4cba-aebd-9c084b71c74e))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "TP1") (unit 1)
         )
@@ -5478,7 +5393,7 @@
     )
     (pin "1" (uuid acb9fda8-74dc-4994-95da-0c4fe1dfa5e9))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR037") (unit 1)
         )
@@ -5504,7 +5419,7 @@
     (pin "1" (uuid f483bb79-1fb0-4ed4-a81a-43d32059771d))
     (pin "2" (uuid 40e6db13-2aab-469e-87a6-3b9ae016ea12))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "C8") (unit 1)
         )
@@ -5529,7 +5444,7 @@
     )
     (pin "1" (uuid f7284ccf-7702-444a-981f-f88440739682))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
           (reference "#PWR039") (unit 1)
         )
@@ -5555,7 +5470,7 @@
     (pin "1" (uuid 3a3c2da4-c38f-4591-bc34-466cb5e6eaad))
     (pin "2" (uuid a2bb1878-0c6e-4953-bf29-7f6fba90f46f))
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "D10") (unit 1)
         )
@@ -5592,7 +5507,7 @@
       (uuid 3eadd572-6af5-472e-9358-a224921e5423)
     )
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee" (page "2"))
       )
     )
@@ -5621,7 +5536,7 @@
       (uuid 57f4e83f-c226-40b9-a2e2-6d4e2acff3ce)
     )
     (instances
-      (project "TypeC_Digital_Converter"
+      (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee" (page "3"))
       )
     )

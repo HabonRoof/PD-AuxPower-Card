@@ -120,7 +120,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PA5     ------> ADC1_IN10
     PA6     ------> ADC1_IN11
     */
-    GPIO_InitStruct.Pin = V1_FB_Pin|V2_FB_Pin|I1_FB_Pin|I2_FB_Pin;
+    GPIO_InitStruct.Pin = I2_FB_Pin|V2_FB_Pin|V1_FB_Pin|I1_FB_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -157,7 +157,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PA5     ------> ADC1_IN10
     PA6     ------> ADC1_IN11
     */
-    HAL_GPIO_DeInit(GPIOA, V1_FB_Pin|V2_FB_Pin|I1_FB_Pin|I2_FB_Pin);
+    HAL_GPIO_DeInit(GPIOA, I2_FB_Pin|V2_FB_Pin|V1_FB_Pin|I1_FB_Pin);
 
     /* ADC1 interrupt DeInit */
     HAL_NVIC_DisableIRQ(ADC1_IRQn);
