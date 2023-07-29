@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "pd_aux_typedef.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,10 +47,12 @@ I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim16;
 
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
+
 
 /* USER CODE END PV */
 
@@ -61,6 +64,7 @@ static void MX_TIM1_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_TIM16_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -68,9 +72,17 @@ static void MX_USART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint16_t ADC_value[4] = {0};
-uint16_t Timer1_counter = 0;
+uint16_t timer1_ctr = 0;
+uint16_t timer16_ctr = 0;
 uint16_t PWM_duty = 0;
+uint8_t SW1_3v3_5v = 0;
+uint8_t SW2_12v_24v = 0;
 
+// FUSB302B PD controller I2C address
+HAL_StatusTypeDef hal_status;
+uint8_t i2c_buffer[32] = {0};
+uint16_t i2c_data = 0;
+Board_status_t board_status;
 /* USER CODE END 0 */
 
 /**
@@ -103,17 +115,22 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
-//  MX_I2C1_Init();
+  MX_I2C1_Init();
   MX_TIM2_Init();
   MX_USART1_UART_Init();
+  MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
 
   // start pwm generation
-//  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start_IT(&htim1, TIM_CHANNEL_4);
+  // start 10Hz house keeping timer
+  HAL_TIM_Base_Start_IT(&htim16);
+
   // ADC calibration
 //  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
   // start ADC1 interrupt
 //  HAL_ADC_Start_IT(&hadc1);
+  i2c_buffer[0] = 0x01;
 
   /* USER CODE END 2 */
 
@@ -121,24 +138,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  hal_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+	  if(hal_status == HAL_OK){
+		  hal_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+	  	  if(hal_status == HAL_OK){
+	  		i2c_data =  i2c_buffer[0];
+	  	  }
+	  	  else{
+			  board_status = I2C_ERROR;
+	  	  }
+	  }
+	  else{
+		  board_status = I2C_ERROR;
+	  }
+	  i2c_buffer[0] = 0x01;
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin(LED_24v_GPIO_Port,LED_24v_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_5v_GPIO_Port,LED_5v_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_12v_GPIO_Port,LED_12v_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_3v3_GPIO_Port,LED_3v3_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_3v3_GPIO_Port,LED_3v3_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_12v_GPIO_Port,LED_12v_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_5v_GPIO_Port,LED_5v_Pin);
-	  HAL_Delay(50);
-	  HAL_GPIO_TogglePin(LED_24v_GPIO_Port,LED_24v_Pin);
-	  HAL_Delay(50);
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -300,7 +315,7 @@ static void MX_I2C1_Init(void)
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
   hi2c1.Init.OwnAddress2 = 0;
   hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_ENABLE;
   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
   {
@@ -455,6 +470,38 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief TIM16 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM16_Init(void)
+{
+
+  /* USER CODE BEGIN TIM16_Init 0 */
+
+  /* USER CODE END TIM16_Init 0 */
+
+  /* USER CODE BEGIN TIM16_Init 1 */
+
+  /* USER CODE END TIM16_Init 1 */
+  htim16.Instance = TIM16;
+  htim16.Init.Prescaler = 7999;
+  htim16.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim16.Init.Period = 99;
+  htim16.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim16.Init.RepetitionCounter = 0;
+  htim16.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim16) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM16_Init 2 */
+
+  /* USER CODE END TIM16_Init 2 */
+
+}
+
+/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -506,40 +553,30 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, LED_3v3_Pin|LED_12v_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, LED_3v3_Pin|LED_5v_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_5v_Pin|LED_24v_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_12v_Pin|LED_24v_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pins : LED_3v3_Pin LED_12v_Pin */
-  GPIO_InitStruct.Pin = LED_3v3_Pin|LED_12v_Pin;
+  /*Configure GPIO pins : LED_3v3_Pin LED_5v_Pin */
+  GPIO_InitStruct.Pin = LED_3v3_Pin|LED_5v_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_5v_Pin LED_24v_Pin */
-  GPIO_InitStruct.Pin = LED_5v_Pin|LED_24v_Pin;
+  /*Configure GPIO pins : LED_12v_Pin LED_24v_Pin */
+  GPIO_InitStruct.Pin = LED_12v_Pin|LED_24v_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Vout1_sel_Pin Vout2_sel_Pin Button0_Pin */
-  GPIO_InitStruct.Pin = Vout1_sel_Pin|Vout2_sel_Pin|Button0_Pin;
+  /*Configure GPIO pins : Vout1_sel_Pin Vout2_sel_Pin */
+  GPIO_InitStruct.Pin = Vout1_sel_Pin|Vout2_sel_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : LD3_Pin */
-  GPIO_InitStruct.Pin = LD3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : USB_INT_Pin */
   GPIO_InitStruct.Pin = USB_INT_Pin;
@@ -548,25 +585,48 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(USB_INT_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
+  HAL_GPIO_WritePin(GPIOA, LED_5v_Pin|LED_24v_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, LED_3v3_Pin|LED_12v_Pin, GPIO_PIN_SET);
 
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
 	// Read The ADC Conversion Result & Map It To PWM DutyCycle
 	ADC_value[0] = HAL_ADC_GetValue(&hadc1);
-//	ADC_value[1] = HAL_ADC_GetValue(&hadc1);
-//	ADC_value[2] = HAL_ADC_GetValue(&hadc1);
-//	ADC_value[3] = HAL_ADC_GetValue(&hadc1);
+
 
 	PWM_duty = ADC_value[0] * 2;
 	if(PWM_duty > 8000)
 		PWM_duty = 8000;
 	TIM1->CCR4 = PWM_duty;
 	TIM1->CCR1 = PWM_duty;
-	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	if(htim == &htim16){
+		SW1_3v3_5v = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
+		SW2_12v_24v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
+		if(SW1_3v3_5v == 1){
+			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET);
+		}
+		else{
+			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET);
+		}
+
+		if(SW2_12v_24v == 1){
+			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET);
+		}
+		else{
+			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET);
+		}
+		timer16_ctr ++;
+	}
 }
 /* USER CODE END 4 */
 

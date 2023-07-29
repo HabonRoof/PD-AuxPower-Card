@@ -61,12 +61,12 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_3v3_Pin GPIO_PIN_14
 #define LED_3v3_GPIO_Port GPIOC
-#define LED_12v_Pin GPIO_PIN_15
-#define LED_12v_GPIO_Port GPIOC
+#define LED_5v_Pin GPIO_PIN_15
+#define LED_5v_GPIO_Port GPIOC
 #define DRV2_Pin GPIO_PIN_0
 #define DRV2_GPIO_Port GPIOA
-#define LED_5v_Pin GPIO_PIN_1
-#define LED_5v_GPIO_Port GPIOA
+#define LED_12v_Pin GPIO_PIN_1
+#define LED_12v_GPIO_Port GPIOA
 #define LED_24v_Pin GPIO_PIN_2
 #define LED_24v_GPIO_Port GPIOA
 #define I2_FB_Pin GPIO_PIN_3
@@ -87,10 +87,6 @@ void Error_Handler(void);
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
-#define Button0_Pin GPIO_PIN_15
-#define Button0_GPIO_Port GPIOA
-#define LD3_Pin GPIO_PIN_3
-#define LD3_GPIO_Port GPIOB
 #define USB_INT_Pin GPIO_PIN_5
 #define USB_INT_GPIO_Port GPIOB
 
