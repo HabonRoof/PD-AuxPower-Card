@@ -42,6 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
+DMA_HandleTypeDef hdma_adc1;
 
 I2C_HandleTypeDef hi2c1;
 
@@ -59,6 +60,7 @@ UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_I2C1_Init(void);
@@ -71,12 +73,16 @@ static void MX_TIM16_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint16_t ADC_value[4] = {0};
+uint16_t ADC_res[4] = {0};
+uint16_t Iout1_FB = 0;
+uint16_t Iout2_FB = 0;
+uint16_t Vout1_FB = 0;
+uint16_t Vout2_FB = 0;
 uint16_t timer1_ctr = 0;
-uint16_t timer16_ctr = 0;
+uint32_t timer16_ctr = 0;
 uint16_t PWM_duty = 0;
-uint8_t SW1_3v3_5v = 0;
-uint8_t SW2_12v_24v = 0;
+uint8_t SW_5v_3v3 = 0;
+uint8_t SW_24v_12v = 0;
 
 // FUSB302B PD controller I2C address
 HAL_StatusTypeDef hal_status;
@@ -113,6 +119,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_I2C1_Init();
@@ -120,17 +127,16 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
-
+  // ADC calibration
+  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+  HAL_Delay(1);
   // start pwm generation
   HAL_TIM_PWM_Start_IT(&htim1, TIM_CHANNEL_4);
-  // start 10Hz house keeping timer
+  // start 10Hz house-keeping timer, will also start ADC DMA conversion
   HAL_TIM_Base_Start_IT(&htim16);
-
-  // ADC calibration
-//  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
-  // start ADC1 interrupt
-//  HAL_ADC_Start_IT(&hadc1);
+  // initialize I2C buffer
   i2c_buffer[0] = 0x01;
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
 
   /* USER CODE END 2 */
 
@@ -151,9 +157,11 @@ int main(void)
 	  else{
 		  board_status = I2C_ERROR;
 	  }
-	  i2c_buffer[0] = 0x01;
 	  HAL_Delay(1000);
+	  i2c_buffer[0] = 0x01;
+
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -233,14 +241,14 @@ static void MX_ADC1_Init(void)
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
+  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.NbrOfConversion = 4;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-  hadc1.Init.DMAContinuousRequests = DISABLE;
+  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.OversamplingMode = DISABLE;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -537,6 +545,22 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -593,39 +617,47 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	// Read The ADC Conversion Result & Map It To PWM DutyCycle
-	ADC_value[0] = HAL_ADC_GetValue(&hadc1);
-
-
-	PWM_duty = ADC_value[0] * 2;
-	if(PWM_duty > 8000)
-		PWM_duty = 8000;
-	TIM1->CCR4 = PWM_duty;
-	TIM1->CCR1 = PWM_duty;
+	_3v3LED_OFF;
+	// Read The ADC Conversion result to variables
+	Iout2_FB = ADC_res[0];
+	Vout2_FB = ADC_res[1];
+	Vout1_FB = ADC_res[2];
+	Iout1_FB = ADC_res[3];
+//	if(PWM_duty > 8000)
+//		PWM_duty = 8000;
+//	TIM1->CCR4 = PWM_duty;
+//	TIM1->CCR1 = PWM_duty;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim == &htim16){
-		SW1_3v3_5v = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
-		SW2_12v_24v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
-		if(SW1_3v3_5v == 1){
-			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET);
-		}
-		else{
-			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET);
-		}
-
-		if(SW2_12v_24v == 1){
-			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET);
-		}
-		else{
-			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET);
-		}
+		_3v3LED_ON;
+		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
+		SW_5v_3v3 = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
+		SW_24v_12v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
+//		if(SW_5v_3v3 == 1){
+//			// lit 3v3 LED
+//			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET);
+//		}
+//		else{
+//			// lit 5V LED
+//			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET);
+//			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET);
+//		}
+//
+//		if(SW_24v_12v == 1){
+//			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET);
+//		}
+//		else{
+//			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET);
+//			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET);
+//		}
 		timer16_ctr ++;
+	}
+	if(htim == &htim1){
+		timer1_ctr ++;
 	}
 }
 /* USER CODE END 4 */
