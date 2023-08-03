@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include "pd_aux_typedef.h"
 #include "stdio.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +49,7 @@ I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim15;
 TIM_HandleTypeDef htim16;
 
 UART_HandleTypeDef huart1;
@@ -67,6 +69,7 @@ static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM16_Init(void);
+static void MX_TIM15_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -78,17 +81,27 @@ uint16_t Iout1_FB = 0;
 uint16_t Iout2_FB = 0;
 uint16_t Vout1_FB = 0;
 uint16_t Vout2_FB = 0;
-uint16_t timer1_ctr = 0;
+uint32_t timer15_ctr = 0;
 uint32_t timer16_ctr = 0;
 uint16_t PWM_duty = 0;
 uint8_t SW_5v_3v3 = 0;
 uint8_t SW_24v_12v = 0;
+uint8_t SW_5v_3v3_old = 0;
+uint8_t SW_24v_12v_old = 0;
+
 
 // FUSB302B PD controller I2C address
-HAL_StatusTypeDef hal_status;
+HAL_StatusTypeDef i2c_status;
 uint8_t i2c_buffer[32] = {0};
 uint16_t i2c_data = 0;
+
+// UART communication variables
+char uart_tx_msg[256];
+char uart_rx_msg[256];
+
+// variables for monitor board status
 Board_status_t board_status;
+
 /* USER CODE END 0 */
 
 /**
@@ -126,39 +139,46 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   MX_TIM16_Init();
+  MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
   // ADC calibration
   HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
   HAL_Delay(1);
+
   // start pwm generation
   HAL_TIM_PWM_Start_IT(&htim1, TIM_CHANNEL_4);
-  // start 10Hz house-keeping timer, will also start ADC DMA conversion
+
+  // start 10Hz house-keeping timer
   HAL_TIM_Base_Start_IT(&htim16);
+
+  // start 10kHz general timer for ADC DMA software trigger
+  HAL_TIM_Base_Start_IT(&htim15);
+
   // initialize I2C buffer
   i2c_buffer[0] = 0x01;
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  hal_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-	  if(hal_status == HAL_OK){
-		  hal_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-	  	  if(hal_status == HAL_OK){
-	  		i2c_data =  i2c_buffer[0];
-	  	  }
-	  	  else{
-			  board_status = I2C_ERROR;
-	  	  }
-	  }
-	  else{
-		  board_status = I2C_ERROR;
-	  }
-	  HAL_Delay(1000);
-	  i2c_buffer[0] = 0x01;
+//	  i2c_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+//	  if(i2c_status == HAL_OK){
+//		  i2c_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+//	  	  if(i2c_status == HAL_OK){
+//	  		i2c_data =  i2c_buffer[0];
+//	  	  }
+//	  	  else{
+//			  board_status = I2C_ERROR;
+//	  	  }
+//	  }
+//	  else{
+//		  board_status = I2C_ERROR;
+//	  }
+	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
+	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+	  HAL_Delay(100);
+//	  i2c_buffer[0] = 0x01;
 
     /* USER CODE END WHILE */
 
@@ -478,6 +498,52 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief TIM15 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM15_Init(void)
+{
+
+  /* USER CODE BEGIN TIM15_Init 0 */
+
+  /* USER CODE END TIM15_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM15_Init 1 */
+
+  /* USER CODE END TIM15_Init 1 */
+  htim15.Instance = TIM15;
+  htim15.Init.Prescaler = 79;
+  htim15.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim15.Init.Period = 99;
+  htim15.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim15.Init.RepetitionCounter = 0;
+  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim15) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim15, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim15, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM15_Init 2 */
+
+  /* USER CODE END TIM15_Init 2 */
+
+}
+
+/**
   * @brief TIM16 Initialization Function
   * @param None
   * @retval None
@@ -617,47 +683,59 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	_3v3LED_OFF;
 	// Read The ADC Conversion result to variables
 	Iout2_FB = ADC_res[0];
 	Vout2_FB = ADC_res[1];
 	Vout1_FB = ADC_res[2];
 	Iout1_FB = ADC_res[3];
-//	if(PWM_duty > 8000)
-//		PWM_duty = 8000;
-//	TIM1->CCR4 = PWM_duty;
-//	TIM1->CCR1 = PWM_duty;
+	// calculate PWM duty
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim == &htim16){
-		_3v3LED_ON;
-		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
 		SW_5v_3v3 = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
 		SW_24v_12v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
-//		if(SW_5v_3v3 == 1){
-//			// lit 3v3 LED
-//			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET);
-//			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET);
-//		}
-//		else{
-//			// lit 5V LED
-//			HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET);
-//			HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET);
-//		}
-//
-//		if(SW_24v_12v == 1){
-//			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET);
-//			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET);
-//		}
-//		else{
-//			HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET);
-//			HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET);
-//		}
+		if(SW_5v_3v3 != SW_5v_3v3_old){
+			SW_5v_3v3_old = SW_5v_3v3;
+			// indicate current output voltage mode
+			if(SW_5v_3v3 == 1){
+				// lit 3v3 LED
+				_3v3LED_ON;
+				_5vLED_OFF;
+				sprintf(uart_tx_msg,"Output1 set to 3v3\n\r");
+			}
+			else{
+				// lit 5v LED
+				_3v3LED_OFF;
+				_5vLED_ON;
+				sprintf(uart_tx_msg,"Output1 set to 5v\n\r");
+			}
+			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+		}
+		if(SW_24v_12v != SW_24v_12v_old){
+			SW_24v_12v_old = SW_24v_12v;
+			if(SW_24v_12v == 1){
+				// lit 12v LED
+				_12vLED_ON;
+				_24vLED_OFF;
+				sprintf(uart_tx_msg,"Output2 set to 12v\n\r");
+			}
+			else{
+				// lit 24v LED
+				_12vLED_OFF;
+				_24vLED_ON;
+				sprintf(uart_tx_msg,"Output2 set to 24v\n\r");
+			}
+			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+		}
+		// 100Hz counter
 		timer16_ctr ++;
 	}
-	if(htim == &htim1){
-		timer1_ctr ++;
+	if(htim == &htim15){
+		// soft trigger ADC convert using DMA request
+		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
+		// 10kHz counter
+//		timer15_ctr ++;
 	}
 }
 /* USER CODE END 4 */

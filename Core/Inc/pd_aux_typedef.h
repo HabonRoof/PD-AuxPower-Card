@@ -35,20 +35,21 @@
 #define REG_FIFOS		0x43
 
 // ********************************************
-// MACROS
+// Macros for LEDs
 // ********************************************
-#define _3v3LED_ON	HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET)
-#define _3v3LED_OFF	HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET)
+#define _3v3LED_ON		HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET)
+#define _3v3LED_OFF		HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET)
 #define _3v3LED_TOGGLE	HAL_GPIO_TogglePin(LED_3v3_GPIO_Port, LED_3v3_Pin)
-#define _5vLED_ON	HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET)
-#define _5vLED_OFF	HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET)
+#define _5vLED_ON		HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_RESET)
+#define _5vLED_OFF		HAL_GPIO_WritePin(LED_5v_GPIO_Port, LED_5v_Pin, GPIO_PIN_SET)
 #define _5vLED_TOGGLE	HAL_GPIO_TogglePin(LED_5v_GPIO_Port, LED_5v_Pin)
-#define _12vLED_ON	HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET)
-#define _12vLED_OFF	HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET)
+#define _12vLED_ON		HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_RESET)
+#define _12vLED_OFF		HAL_GPIO_WritePin(LED_12v_GPIO_Port, LED_12v_Pin, GPIO_PIN_SET)
 #define _12vLED_TOGGLE	HAL_GPIO_TogglePin(LED_12v_GPIO_Port, LED_12v_Pin)
-#define _24vLED_ON	HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET)
-#define _24vLED_OFF	HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET)
+#define _24vLED_ON		HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET)
+#define _24vLED_OFF		HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET)
 #define _24vLED_TOGGLE	HAL_GPIO_TogglePin(LED_24v_GPIO_Port, LED_24v_Pin)
+
 
 typedef enum {
 	BOARD_OK, PD_ERROR, TIMER_ERROR, ADC_ERROR,
