@@ -8,6 +8,9 @@
 #ifndef INC_PD_AUX_TYPEDEF_H_
 #define INC_PD_AUX_TYPEDEF_H_
 
+//*********************************************
+// Register address of FUSB302B PD controller
+//*********************************************
 #define FUSB302B_ADDR 	0x22 << 1
 #define REG_DEVICE_ID	0x01
 #define REG_SWITCH0		0x02
@@ -34,9 +37,9 @@
 #define REG_INTERRUPT	0x42
 #define REG_FIFOS		0x43
 
-// ********************************************
+//*********************************************
 // Macros for LEDs
-// ********************************************
+//*********************************************
 #define _3v3LED_ON		HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET)
 #define _3v3LED_OFF		HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_SET)
 #define _3v3LED_TOGGLE	HAL_GPIO_TogglePin(LED_3v3_GPIO_Port, LED_3v3_Pin)
@@ -49,6 +52,17 @@
 #define _24vLED_ON		HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_RESET)
 #define _24vLED_OFF		HAL_GPIO_WritePin(LED_24v_GPIO_Port, LED_24v_Pin, GPIO_PIN_SET)
 #define _24vLED_TOGGLE	HAL_GPIO_TogglePin(LED_24v_GPIO_Port, LED_24v_Pin)
+
+//*********************************************
+// PWM Limits
+//*********************************************
+// Duty limit of 3.3/5v rail
+#define PWM1_MAX_DUTY	7999
+#define PWM1_MIN_DUTY	0
+
+// Duty limit of 12/24v rail
+#define PWM2_MAX_DUTY	7999
+#define PWM2_MIN_DUTY	0
 
 
 typedef enum {
