@@ -87,8 +87,8 @@ uint16_t pwm1_duty = 0;
 uint16_t pwm2_duty = 0;
 uint8_t SW_5v_3v3 = 0;
 uint8_t SW_24v_12v = 0;
-uint8_t SW_5v_3v3_old = 0;
-uint8_t SW_24v_12v_old = 0;
+uint8_t SW_5v_3v3_old = 2;
+uint8_t SW_24v_12v_old = 2;
 
 
 // FUSB302B PD controller I2C address
@@ -395,7 +395,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 7999;
+  htim1.Init.Period = 1599;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -412,7 +412,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
@@ -445,7 +445,8 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM1_Init 2 */
-  htim1.Instance->CCR4 = 4000;
+  // Set initial duty cycle = 5%
+  htim1.Instance->CCR4 = 400;
   /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
 
@@ -472,7 +473,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 7999;
+  htim2.Init.Period = 1599;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
@@ -494,7 +495,9 @@ static void MX_TIM2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM2_Init 2 */
-  htim2.Instance->CCR1 = 4000;
+  // Set initial duty cycle = 5%
+
+  htim2.Instance->CCR1 = 100;
   /* USER CODE END TIM2_Init 2 */
   HAL_TIM_MspPostInit(&htim2);
 
@@ -697,14 +700,14 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 		pwm1_duty = PWM1_MAX_DUTY;
 	if(pwm1_duty < PWM1_MIN_DUTY)
 		pwm1_duty = PWM1_MIN_DUTY;
-	htim1.Instance->CCR4 = pwm1_duty;
+//	htim1.Instance->CCR4 = pwm1_duty;
 
 	pwm2_duty = Iout1_FB << 1;
 	if(pwm2_duty > PWM2_MAX_DUTY)
 		pwm2_duty = PWM2_MAX_DUTY;
 	if(pwm2_duty < PWM2_MIN_DUTY)
 		pwm2_duty = PWM2_MIN_DUTY;
-	htim2.Instance->CCR1 = pwm2_duty;
+//	htim2.Instance->CCR1 = pwm2_duty;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
