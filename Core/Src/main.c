@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pd_aux_typedef.h"
+#include "pid.h"
 #include "stdio.h"
 #include "string.h"
 /* USER CODE END Includes */
@@ -83,8 +84,8 @@ uint16_t Vout1_FB = 0;
 uint16_t Vout2_FB = 0;
 uint32_t timer15_ctr = 0;
 uint32_t timer16_ctr = 0;
-uint16_t pwm1_duty = 0;
-uint16_t pwm2_duty = 0;
+uint16_t pwm1_duty = PWM1_MIN_DUTY;
+uint16_t pwm2_duty = PWM2_MIN_DUTY;
 uint8_t SW_5v_3v3 = 0;
 uint8_t SW_24v_12v = 0;
 uint8_t SW_5v_3v3_old = 2;
@@ -99,6 +100,10 @@ uint16_t i2c_data = 0;
 // UART communication variables
 char uart_tx_msg[256];
 char uart_rx_msg[256];
+
+// PID parameter structure
+extern PID_struct_t Vout1_pid_param;
+extern PID_struct_t Vout2_pid_param;
 
 // variables for monitor board status
 Board_status_t board_status;
@@ -129,6 +134,8 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
+  // Enable SysTick timer (if not enabled by default)
+//  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq());
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -142,6 +149,9 @@ int main(void)
   MX_TIM16_Init();
   MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
+  Init_pid(&Vout1_pid_param);
+  Init_pid(&Vout2_pid_param);
+
   // ADC calibration
   HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
   HAL_Delay(1);
@@ -150,6 +160,8 @@ int main(void)
   HAL_TIM_PWM_Start_IT(&htim1, TIM_CHANNEL_4);
   HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_1);
 
+  // kick off ADC DMA conversion, this function active ADC peripheral
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_res, 4);
 
   // start 10Hz house-keeping timer
   HAL_TIM_Base_Start_IT(&htim16);
@@ -178,9 +190,9 @@ int main(void)
 //	  else{
 //		  board_status = I2C_ERROR;
 //	  }
-	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
-	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
-	  HAL_Delay(100);
+//	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
+//	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+//	  HAL_Delay(100);
 //	  i2c_buffer[0] = 0x01;
 
     /* USER CODE END WHILE */
@@ -248,7 +260,9 @@ static void MX_ADC1_Init(void)
 {
 
   /* USER CODE BEGIN ADC1_Init 0 */
-
+  /* The ADC is set triggered by TIM1 TRGO, which is TIM1 update event
+   * then after
+   */
   /* USER CODE END ADC1_Init 0 */
 
   ADC_ChannelConfTypeDef sConfig = {0};
@@ -264,13 +278,13 @@ static void MX_ADC1_Init(void)
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.NbrOfConversion = 4;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
   hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.OversamplingMode = DISABLE;
@@ -412,7 +426,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
   sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
@@ -446,7 +460,7 @@ static void MX_TIM1_Init(void)
   }
   /* USER CODE BEGIN TIM1_Init 2 */
   // Set initial duty cycle = 5%
-  htim1.Instance->CCR4 = 400;
+  htim1.Instance->CCR4 = PWM1_MIN_DUTY;
   /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
 
@@ -464,6 +478,8 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 0 */
 
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
@@ -476,7 +492,22 @@ static void MX_TIM2_Init(void)
   htim2.Init.Period = 1599;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_COMBINED_RESETTRIGGER;
+  sSlaveConfig.InputTrigger = TIM_TS_ITR0;
+  if (HAL_TIM_SlaveConfigSynchro(&htim2, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
   }
@@ -497,7 +528,7 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
   // Set initial duty cycle = 5%
 
-  htim2.Instance->CCR1 = 100;
+  htim2.Instance->CCR1 = PWM2_MIN_DUTY;
   /* USER CODE END TIM2_Init 2 */
   HAL_TIM_MspPostInit(&htim2);
 
@@ -522,12 +553,12 @@ static void MX_TIM15_Init(void)
 
   /* USER CODE END TIM15_Init 1 */
   htim15.Instance = TIM15;
-  htim15.Init.Prescaler = 79;
+  htim15.Init.Prescaler = 0;
   htim15.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim15.Init.Period = 99;
+  htim15.Init.Period = 65535;
   htim15.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim15.Init.RepetitionCounter = 0;
-  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim15) != HAL_OK)
   {
     Error_Handler();
@@ -681,8 +712,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(USB_INT_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
-  HAL_GPIO_WritePin(GPIOA, LED_5v_Pin|LED_24v_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOC, LED_3v3_Pin|LED_12v_Pin, GPIO_PIN_SET);
+  _3v3LED_OFF;
+  _5vLED_OFF;
+  _12vLED_OFF;
+  _24vLED_OFF;
 
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -694,55 +727,51 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	Vout2_FB = ADC_res[1];
 	Vout1_FB = ADC_res[2];
 	Iout1_FB = ADC_res[3];
-	// calculate PWM duty
-	pwm1_duty = Iout2_FB << 1;
-	if(pwm1_duty > PWM1_MAX_DUTY)
-		pwm1_duty = PWM1_MAX_DUTY;
-	if(pwm1_duty < PWM1_MIN_DUTY)
-		pwm1_duty = PWM1_MIN_DUTY;
-//	htim1.Instance->CCR4 = pwm1_duty;
 
-	pwm2_duty = Iout1_FB << 1;
-	if(pwm2_duty > PWM2_MAX_DUTY)
-		pwm2_duty = PWM2_MAX_DUTY;
-	if(pwm2_duty < PWM2_MIN_DUTY)
-		pwm2_duty = PWM2_MIN_DUTY;
-//	htim2.Instance->CCR1 = pwm2_duty;
+	Vout1_pid_param.adc_fb_value = Vout1_FB;
+	pid_process(&Vout1_pid_param);
+	htim1.Instance->CCR4 = Vout1_pid_param.output;
+
+	Vout2_pid_param.adc_fb_value = Vout2_FB;
+	pid_process(&Vout2_pid_param);
+	htim2.Instance->CCR1 = Vout2_pid_param.output;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim == &htim16){
-		SW_5v_3v3 = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
+		SW_5v_3v3  = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
 		SW_24v_12v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
+
 		if(SW_5v_3v3 != SW_5v_3v3_old){
 			SW_5v_3v3_old = SW_5v_3v3;
 			// indicate current output voltage mode
 			if(SW_5v_3v3 == 1){
-				// lit 3v3 LED
 				_3v3LED_ON;
 				_5vLED_OFF;
+				Vout1_pid_param.target_value = _3v3_ADC_target;
 				sprintf(uart_tx_msg,"Output1 set to 3v3\n\r");
 			}
 			else{
-				// lit 5v LED
 				_3v3LED_OFF;
 				_5vLED_ON;
+				Vout1_pid_param.target_value = _5v_ADC_target;
 				sprintf(uart_tx_msg,"Output1 set to 5v\n\r");
 			}
 			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
 		}
+
 		if(SW_24v_12v != SW_24v_12v_old){
 			SW_24v_12v_old = SW_24v_12v;
 			if(SW_24v_12v == 1){
-				// lit 12v LED
 				_12vLED_ON;
 				_24vLED_OFF;
+				Vout2_pid_param.target_value = _12v_ADC_target;
 				sprintf(uart_tx_msg,"Output2 set to 12v\n\r");
 			}
 			else{
-				// lit 24v LED
 				_12vLED_OFF;
 				_24vLED_ON;
+				Vout2_pid_param.target_value = _24v_ADC_target;
 				sprintf(uart_tx_msg,"Output2 set to 24v\n\r");
 			}
 			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
@@ -751,12 +780,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		timer16_ctr ++;
 	}
 	if(htim == &htim15){
-		// soft trigger ADC convert using DMA request
-		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_res, 4);
 		// 10kHz counter
 //		timer15_ctr ++;
 	}
 }
+
 /* USER CODE END 4 */
 
 /**

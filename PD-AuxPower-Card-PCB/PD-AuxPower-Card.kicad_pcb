@@ -3942,7 +3942,7 @@
     (property "ki_keywords" "LED diode")
     (path "/e997bcf1-f285-47ef-8424-7ab80cda29e8")
     (attr smd)
-    (fp_text reference "D8" (at -5.7913 0 90) (layer "F.SilkS")
+    (fp_text reference "D8" (at -5.7405 0.127 90) (layer "F.SilkS")
         (effects (font (size 1 1) (thickness 0.153)))
       (tstamp 4ca2b3ed-b602-4bb9-8979-94cd4d386c66)
     )

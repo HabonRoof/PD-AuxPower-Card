@@ -54,15 +54,23 @@
 #define _24vLED_TOGGLE	HAL_GPIO_TogglePin(LED_24v_GPIO_Port, LED_24v_Pin)
 
 //*********************************************
+// Output target value
+//*********************************************
+#define _3v3_ADC_target	3320
+#define _5v_ADC_target 	2048
+#define _12v_ADC_target	3025
+#define _24v_ADC_target	2000
+
+//*********************************************
 // PWM Limits
 //*********************************************
 // Duty limit of 3.3/5v rail
-#define PWM1_MAX_DUTY	7999
-#define PWM1_MIN_DUTY	0
+#define PWM1_MAX_DUTY	799		// 1499 = 100%
+#define PWM1_MIN_DUTY	10
 
 // Duty limit of 12/24v rail
-#define PWM2_MAX_DUTY	7999
-#define PWM2_MIN_DUTY	0
+#define PWM2_MAX_DUTY	799		// 1499 = 100%
+#define PWM2_MIN_DUTY	10
 
 
 typedef enum {
