@@ -20,7 +20,7 @@ void Init_pid(PID_struct_t* pid)
 {
 	if(pid == &Vout1_pid_param){
 	    // Set PID Coefficients
-		pid->Kp = 0.3;
+		pid->Kp = 0.2;
 		pid->Ki = 0.001;
 		pid->Kd = 0;
 

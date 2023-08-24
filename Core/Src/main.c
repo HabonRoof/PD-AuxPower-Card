@@ -21,10 +21,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "pd_aux_typedef.h"
-#include "pid.h"
 #include "stdio.h"
 #include "string.h"
+#include "pd_aux_typedef.h"
+#include "pid.h"
+#include "FUSB302B_driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,6 +85,7 @@ uint16_t Vout1_FB = 0;
 uint16_t Vout2_FB = 0;
 uint32_t timer15_ctr = 0;
 uint32_t timer16_ctr = 0;
+uint8_t adc_isr_ctr = 0;
 uint16_t pwm1_duty = PWM1_MIN_DUTY;
 uint16_t pwm2_duty = PWM2_MIN_DUTY;
 uint8_t SW_5v_3v3 = 0;
@@ -104,6 +106,9 @@ char uart_rx_msg[256];
 // PID parameter structure
 extern PID_struct_t Vout1_pid_param;
 extern PID_struct_t Vout2_pid_param;
+
+// FUSB302B object definition
+extern FUSB302B_t fusb;
 
 // variables for monitor board status
 Board_status_t board_status;
@@ -149,6 +154,8 @@ int main(void)
   MX_TIM16_Init();
   MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
+  // Initialize FUSB302B PD chip
+  //
   Init_pid(&Vout1_pid_param);
   Init_pid(&Vout2_pid_param);
 
@@ -409,7 +416,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 1599;
+  htim1.Init.Period = 399;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -489,7 +496,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 1599;
+  htim2.Init.Period = 399;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -722,6 +729,9 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
+	// PWM divider for lower transformer size
+	if(adc_isr_ctr % ADC_ISR_DIV == 0){
+	adc_isr_ctr = 0;
 	// Read The ADC Conversion result to variables
 	Iout2_FB = ADC_res[0];
 	Vout2_FB = ADC_res[1];
@@ -735,6 +745,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	Vout2_pid_param.adc_fb_value = Vout2_FB;
 	pid_process(&Vout2_pid_param);
 	htim2.Instance->CCR1 = Vout2_pid_param.output;
+	}
+	adc_isr_ctr++;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){

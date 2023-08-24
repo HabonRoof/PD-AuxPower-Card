@@ -1559,6 +1559,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a9964141-3e76-486b-8ac7-1bce4f86ee3b)
   )
+  (text "24Vout will be very hot" (at 189.865 86.995 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid dfaaf21b-7945-4aae-9430-de5bb50c32e1)
+  )
 
   (hierarchical_label "Cur_FB_12V" (shape output) (at 95.885 111.76 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))

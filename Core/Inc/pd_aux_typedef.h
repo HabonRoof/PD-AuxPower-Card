@@ -9,35 +9,6 @@
 #define INC_PD_AUX_TYPEDEF_H_
 
 //*********************************************
-// Register address of FUSB302B PD controller
-//*********************************************
-#define FUSB302B_ADDR 	0x22 << 1
-#define REG_DEVICE_ID	0x01
-#define REG_SWITCH0		0x02
-#define REG_SWITCHE1	0x03
-#define REG_MEASURE		0x04
-#define REG_SLICE		0x05
-#define REG_CONTROL0	0x06
-#define REG_CONTROL1	0x07
-#define REG_CONTROL2	0x08
-#define REG_CONTROL3	0x09
-#define REG_MASK1		0x0A
-#define REG_POWER		0x0B
-#define REG_RESET		0x0C
-#define REG_OCPreg		0x0D
-#define REG_MASKA		0x0E
-#define REG_MASKB		0x0F
-#define REG_CONTROL4	0x10
-#define REG_STATUS0A	0x3C
-#define REG_STATUS1A	0x3D
-#define REG_INTERRUPTA	0x3E
-#define REG_INTERRUPTB	0x3F
-#define REG_STATUS0		0x40
-#define REG_STATUS1		0x41
-#define REG_INTERRUPT	0x42
-#define REG_FIFOS		0x43
-
-//*********************************************
 // Macros for LEDs
 //*********************************************
 #define _3v3LED_ON		HAL_GPIO_WritePin(LED_3v3_GPIO_Port, LED_3v3_Pin, GPIO_PIN_RESET)
@@ -58,20 +29,21 @@
 //*********************************************
 #define _3v3_ADC_target	3320
 #define _5v_ADC_target 	2048
-#define _12v_ADC_target	3025
-#define _24v_ADC_target	2000
+#define _12v_ADC_target	3048
+#define _24v_ADC_target	2040
 
 //*********************************************
 // PWM Limits
 //*********************************************
 // Duty limit of 3.3/5v rail
-#define PWM1_MAX_DUTY	799		// 1499 = 100%
-#define PWM1_MIN_DUTY	10
+#define PWM1_MAX_DUTY	340		// 399 = 200kHz
+#define PWM1_MIN_DUTY	5
 
 // Duty limit of 12/24v rail
-#define PWM2_MAX_DUTY	799		// 1499 = 100%
-#define PWM2_MIN_DUTY	10
+#define PWM2_MAX_DUTY	340		// 399 = 200kHz
+#define PWM2_MIN_DUTY	5
 
+#define ADC_ISR_DIV		20
 
 typedef enum {
 	BOARD_OK, PD_ERROR, TIMER_ERROR, ADC_ERROR,
