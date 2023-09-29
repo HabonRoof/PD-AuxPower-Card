@@ -207,6 +207,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  FUSB302B_init(&hi2c1);
+	  FUSB302B_check_CC_pin(&hi2c1, &fusb);
 	  HAL_Delay(5000);
   }
   /* USER CODE END 3 */

@@ -1,9 +1,11 @@
 /*
- * FUSB302B_driver.h
+ *	FUSB302B_driver.h
  *
  *  Created on: Aug 19, 2023
- *      Author: johnson
+ *  Author: Habonroof<johnson35762@gmail.com>
+ *  Reference author: Philip Tschiemer
  */
+
 
 #ifndef INC_FUSB302B_DRIVER_H_
 #define INC_FUSB302B_DRIVER_H_
@@ -24,7 +26,7 @@
 #define FUSB302B_Switches0_VCONN_CC2			0b00100000
 #define FUSB302B_Switches0_VCONN_CC1			0b00010000
 #define FUSB302B_Switches0_MEAS_CC_MASK			0b00001100
-#define FUSB302B_Switches0_MEAS_CC2				b00001000
+#define FUSB302B_Switches0_MEAS_CC2				0b00001000
 #define FUSB302B_Switches0_MEAS_CC1				0b00000100
 #define FUSB302B_Switches0_PDWN_MASK			0b00000011
 #define FUSB302B_Switches0_PDWN2				0b00000010
@@ -214,7 +216,7 @@
 #define	FUSB302B_TxFIFOToken_SOP2		0x13
 #define	FUSB302B_TxFIFOToken_SOP3		0x1B
 #define	FUSB302B_TxFIFOToken_RESET1		0x15
-#define	FUSB302B_TxFIFOToken_RESET2		x16
+#define	FUSB302B_TxFIFOToken_RESET2		0x16
 #define	FUSB302B_TxFIFOToken_PACKSYM	0x80
 #define	FUSB302B_TxFIFOToken_JAM_CRC	0xFF
 #define	FUSB302B_TxFIFOToken_EOP		0x14
@@ -230,7 +232,7 @@
 #define FUSB302B_RxFIFOToken_SOP2DB			0b01100000
 
 #define PD_BUF_LENGTH			8
-#define FUSB302B_ADDR			0x22 << 1
+#define FUSB302B_ADDR			(0x22 << 1)
 
 typedef enum{
 	Reg_DeviceID 	= 0x01,
@@ -264,10 +266,17 @@ typedef enum {
 	FUSB302B_ERROR,
 } FUSB302B_status_t;
 
+typedef enum{
+	CC_NONE,
+	CC_PIN1,
+	CC_PIN2,
+}CCpin_t;
+
 typedef struct {
 	uint16_t			addr;		// FUSB302B I2C 7-bit address
+	CCpin_t				cc_pin;
 	FUSB320B_Reg_t		reg;
-	uint8_t*			buff;		// PD protocol message buffer
+	uint8_t*			buffer;		// PD protocol message buffer
 	FUSB302B_status_t	status;
 	FUSB302B_status_t	(*deinit)(I2C_HandleTypeDef* hi2c);		// reset FUSB302B
 	FUSB302B_status_t	(*write_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg, uint8_t data);
@@ -279,5 +288,7 @@ FUSB302B_status_t FUSB302B_write_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg
 FUSB302B_status_t FUSB302B_read_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
 FUSB302B_status_t FUSB302B_probe(I2C_HandleTypeDef* hi2c);
 FUSB302B_status_t FUSB302B_init(I2C_HandleTypeDef* hi2c);
+FUSB302B_status_t FUSB302B_check_CC_pin(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+
 
 #endif /* INC_FUSB302B_DRIVER_H_ */
