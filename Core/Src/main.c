@@ -26,6 +26,7 @@
 #include "pd_aux_typedef.h"
 #include "pid.h"
 #include "FUSB302B_driver.h"
+#include "pd_sink.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -205,6 +206,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  FUSB302B_init(&hi2c1);
+	  HAL_Delay(5000);
   }
   /* USER CODE END 3 */
 }

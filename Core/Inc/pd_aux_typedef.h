@@ -27,10 +27,10 @@
 //*********************************************
 // Output target value
 //*********************************************
-#define _3v3_ADC_target	3320
-#define _5v_ADC_target 	2048
-#define _12v_ADC_target	3048
-#define _24v_ADC_target	2040
+#define _3v3_ADC_target	3875
+#define _5v_ADC_target 	3775
+#define _12v_ADC_target	3991
+#define _24v_ADC_target	3750
 
 //*********************************************
 // PWM Limits
@@ -43,7 +43,7 @@
 #define PWM2_MAX_DUTY	340		// 399 = 200kHz
 #define PWM2_MIN_DUTY	5
 
-#define ADC_ISR_DIV		20
+#define ADC_ISR_DIV		30
 
 typedef enum {
 	BOARD_OK, PD_ERROR, TIMER_ERROR, ADC_ERROR,

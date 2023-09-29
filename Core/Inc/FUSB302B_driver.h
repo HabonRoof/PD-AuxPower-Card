@@ -229,8 +229,8 @@
 #define FUSB302B_RxFIFOToken_SOP1DB			0b10000000
 #define FUSB302B_RxFIFOToken_SOP2DB			0b01100000
 
-#define PD_MSG_DATA_LENGTH		256
-#define FUSB302B_ADDR		0x22
+#define PD_BUF_LENGTH			8
+#define FUSB302B_ADDR			0x22 << 1
 
 typedef enum{
 	Reg_DeviceID 	= 0x01,
@@ -260,20 +260,24 @@ typedef enum{
 } FUSB320B_Reg_t;
 
 typedef enum {
-	FUSB302B_OK		= 0,
-	FUSB302B_ERROR 	= 1,
-} FUSB302B_status;
+	FUSB302B_OK,
+	FUSB302B_ERROR,
+} FUSB302B_status_t;
 
 typedef struct {
 	uint16_t			addr;		// FUSB302B I2C 7-bit address
 	FUSB320B_Reg_t		reg;
 	uint8_t*			buff;		// PD protocol message buffer
-	FUSB302B_status		status;
-	FUSB302B_status		(*reset)(I2C_HandleTypeDef* hi2c);		// reset FUSB302B
-	FUSB302B_status		(*write_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
-	FUSB302B_status		(*read_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
+	FUSB302B_status_t	status;
+	FUSB302B_status_t	(*deinit)(I2C_HandleTypeDef* hi2c);		// reset FUSB302B
+	FUSB302B_status_t	(*write_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg, uint8_t data);
+	FUSB302B_status_t	(*read_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
 } FUSB302B_t;
 
-
+FUSB302B_status_t FUSB302B_deinit(I2C_HandleTypeDef* hi2c);
+FUSB302B_status_t FUSB302B_write_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg, uint8_t data);
+FUSB302B_status_t FUSB302B_read_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
+FUSB302B_status_t FUSB302B_probe(I2C_HandleTypeDef* hi2c);
+FUSB302B_status_t FUSB302B_init(I2C_HandleTypeDef* hi2c);
 
 #endif /* INC_FUSB302B_DRIVER_H_ */
