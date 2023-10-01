@@ -193,8 +193,10 @@
 #define FUSB302B_Status1_RXSOP1				0b01000000
 #define FUSB302B_Status1_RX_EMPTY			0b00100000
 #define FUSB302B_Status1_RX_FULL			0b00010000
+#define FUSB302B_Status1_RX_STATUS_MASK		0b00110000
 #define FUSB302B_Status1_TX_EMPTY			0b00001000
 #define FUSB302B_Status1_TX_FULL			0b00000100
+#define FUSB302B_Status1_TX_STATUS_MASK		0b00001100
 #define FUSB302B_Status1_OVRTEMP			0b00000010
 #define FUSB302B_Status1_OCP				0b00000001
 
@@ -232,6 +234,7 @@
 #define FUSB302B_RxFIFOToken_SOP2DB			0b01100000
 
 #define PD_BUF_LENGTH			8
+#define	PD_MESSAGE_LENGTH		80
 #define FUSB302B_ADDR			(0x22 << 1)
 
 typedef enum{
@@ -259,12 +262,49 @@ typedef enum{
 	Reg_Status1		= 0x41,
 	Reg_Interrupt 	= 0x42,
 	Reg_FIFOs		= 0x43,
-} FUSB320B_Reg_t;
+} FUSB320B_Reg_addr_t;
+
+typedef struct {
+	uint8_t	deviceID;
+	uint8_t switches0;
+	uint8_t switches1;
+	uint8_t measure;
+	uint8_t slice;
+	uint8_t control0;
+	uint8_t control1;
+	uint8_t control2;
+	uint8_t control3;
+	uint8_t mask1;
+	uint8_t power;
+	uint8_t reset;
+	uint8_t OCPreg;
+	uint8_t maska;
+	uint8_t maskb;
+	uint8_t control4;
+	uint8_t status0a;
+	uint8_t status1a;
+	uint8_t interrupta;
+	uint8_t interruptb;
+	uint8_t status0;
+	uint8_t status1;
+	uint8_t interrupt;
+	uint8_t FIFOs;
+} FUSB302B_Reg_t;
 
 typedef enum {
 	FUSB302B_OK,
 	FUSB302B_ERROR,
 } FUSB302B_status_t;
+
+typedef enum{
+	RXFIFO_FULL		= 0x01,
+	RXFIFO_EMPTY	= 0x02,
+}FUSB302B_RXFIFO_t;
+
+typedef enum{
+	TXFIFO_FULL		= 0x01,
+	TXFIFO_EMPTY	= 0x02,
+}FUSB302B_TXFIFO_t;
 
 typedef enum{
 	CC_NONE,
@@ -275,20 +315,32 @@ typedef enum{
 typedef struct {
 	uint16_t			addr;		// FUSB302B I2C 7-bit address
 	CCpin_t				cc_pin;
-	FUSB320B_Reg_t		reg;
+	FUSB302B_Reg_t		reg;
 	uint8_t*			buffer;		// PD protocol message buffer
 	FUSB302B_status_t	status;
-	FUSB302B_status_t	(*deinit)(I2C_HandleTypeDef* hi2c);		// reset FUSB302B
-	FUSB302B_status_t	(*write_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg, uint8_t data);
-	FUSB302B_status_t	(*read_reg)(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
+	FUSB302B_RXFIFO_t	rx_sts;
+	FUSB302B_TXFIFO_t	tx_sts;
 } FUSB302B_t;
 
-FUSB302B_status_t FUSB302B_deinit(I2C_HandleTypeDef* hi2c);
-FUSB302B_status_t FUSB302B_write_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg, uint8_t data);
-FUSB302B_status_t FUSB302B_read_reg(I2C_HandleTypeDef* hi2c, FUSB320B_Reg_t reg ,uint8_t *data, uint16_t len);
-FUSB302B_status_t FUSB302B_probe(I2C_HandleTypeDef* hi2c);
-FUSB302B_status_t FUSB302B_init(I2C_HandleTypeDef* hi2c);
+typedef enum{
+	CC_INITED,
+	CC_FAILED,
+} PD_CC_t;
+
+typedef struct{
+	PD_CC_t		cc;
+	uint8_t*	message;
+}PD_protocol_t;
+
+FUSB302B_status_t FUSB302B_deinit(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+FUSB302B_status_t FUSB302B_write_reg(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb, FUSB320B_Reg_addr_t reg, uint8_t data);
+FUSB302B_status_t FUSB302B_read_reg(I2C_HandleTypeDef* hi2c,FUSB302B_t* pfusb, FUSB320B_Reg_addr_t reg , uint16_t len);
+FUSB302B_status_t FUSB302B_probe(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+FUSB302B_status_t FUSB302B_read_all(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+FUSB302B_status_t FUSB302B_init(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
 FUSB302B_status_t FUSB302B_check_CC_pin(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+FUSB302B_status_t FUSB302B_check_FIFO_status(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
+FUSB302B_status_t FUSB302B_start_CC_communication(I2C_HandleTypeDef* hi2c, FUSB302B_t* pfusb);
 
 
 #endif /* INC_FUSB302B_DRIVER_H_ */

@@ -97,12 +97,9 @@ uint8_t SW_24v_12v_old = 2;
 
 // FUSB302B PD controller I2C address
 HAL_StatusTypeDef i2c_status;
-uint8_t i2c_buffer[32] = {0};
-uint16_t i2c_data = 0;
 
 // UART communication variables
 char uart_tx_msg[256];
-char uart_rx_msg[256];
 
 // PID parameter structure
 extern PID_struct_t Vout1_pid_param;
@@ -177,8 +174,9 @@ int main(void)
   // start 10kHz general timer for ADC DMA software trigger
   HAL_TIM_Base_Start_IT(&htim15);
 
-  // initialize I2C buffer
-  i2c_buffer[0] = 0x01;
+  // initial FUSB302B PD chip
+  FUSB302B_init(&hi2c1, &fusb);
+  FUSB302B_read_all(&hi2c1, &fusb);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -206,9 +204,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  FUSB302B_init(&hi2c1);
 	  FUSB302B_check_CC_pin(&hi2c1, &fusb);
-	  HAL_Delay(5000);
+	  FUSB302B_check_FIFO_status(&hi2c1, &fusb);
+	  FUSB302B_start_CC_communication(&hi2c1, &fusb);
+	  _5vLED_TOGGLE;
   }
   /* USER CODE END 3 */
 }
