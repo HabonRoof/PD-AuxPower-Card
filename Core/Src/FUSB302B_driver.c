@@ -235,7 +235,7 @@ FUSB302B_status_t FUSB302B_start_CC_communication(I2C_HandleTypeDef* hi2c, FUSB3
 		break;
 	}
 	// reset PD logic
-	status &= FUSB302B_write_reg(hi2c, pfusb, Reg_Reset, (pfusb->reg.reset & ~FUSB302B_Reset_Reserved_MASK) | FUSB302B_Reset_PD_RESET);
+//	status &= FUSB302B_write_reg(hi2c, pfusb, Reg_Reset, (pfusb->reg.reset & ~FUSB302B_Reset_Reserved_MASK) | FUSB302B_Reset_PD_RESET);
 	FUSB302B_read_all(hi2c, pfusb);
 	if (status != FUSB302B_OK)
 		return FUSB302B_ERROR;
