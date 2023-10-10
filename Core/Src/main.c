@@ -177,6 +177,7 @@ int main(void)
   // initial FUSB302B PD chip
   FUSB302B_init(&hi2c1, &fusb);
   FUSB302B_read_all(&hi2c1, &fusb);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -204,10 +205,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  HAL_Delay(500);
 	  FUSB302B_check_CC_pin(&hi2c1, &fusb);
 	  FUSB302B_check_FIFO_status(&hi2c1, &fusb);
 	  FUSB302B_start_CC_communication(&hi2c1, &fusb);
+	  FUSB302B_read_all(&hi2c1, &fusb);
 	  _5vLED_TOGGLE;
+
   }
   /* USER CODE END 3 */
 }
