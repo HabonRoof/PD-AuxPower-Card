@@ -4,6 +4,13 @@
 
   (paper "A4")
 
+  (title_block
+    (title "3.3/5V Flyback converter")
+    (date "2023-11-26")
+    (rev "Rev 1.0")
+    (company "Habonroof Playground")
+  )
+
   (lib_symbols
     (symbol "Connector:Screw_Terminal_01x02" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 2.54 0)
@@ -1222,6 +1229,10 @@
     (stroke (width 0) (type default))
     (uuid 24bdce15-7fb7-449d-a34f-613630124161)
   )
+  (wire (pts (xy 144.78 151.765) (xy 149.225 151.765))
+    (stroke (width 0) (type default))
+    (uuid 24d0e192-feef-4a23-904a-5dfc3a27eb93)
+  )
   (wire (pts (xy 159.385 67.945) (xy 160.655 67.945))
     (stroke (width 0) (type default))
     (uuid 25b15fe5-de7a-4453-9490-71151f4af180)
@@ -1338,10 +1349,6 @@
     (stroke (width 0) (type default))
     (uuid 6fbf6f02-a7fd-4638-8d4e-ce46ca04b2a0)
   )
-  (wire (pts (xy 154.305 131.445) (xy 158.115 131.445))
-    (stroke (width 0) (type default))
-    (uuid 7460b3a8-b1f2-47ff-a9d7-ef44bd300ce2)
-  )
   (wire (pts (xy 192.405 85.09) (xy 217.17 85.09))
     (stroke (width 0) (type default))
     (uuid 7adfe73a-b3f8-4373-8cdc-94fc328468d8)
@@ -1349,10 +1356,6 @@
   (wire (pts (xy 200.025 67.945) (xy 200.025 71.12))
     (stroke (width 0) (type default))
     (uuid 7c5a59f0-2416-4b40-bf80-7003a6d312e8)
-  )
-  (wire (pts (xy 149.225 131.445) (xy 145.415 131.445))
-    (stroke (width 0) (type default))
-    (uuid 7de773f5-10bc-4b4a-8c64-0f5daf6a3145)
   )
   (wire (pts (xy 88.265 118.745) (xy 95.885 118.745))
     (stroke (width 0) (type default))
@@ -1365,6 +1368,10 @@
   (wire (pts (xy 70.485 102.87) (xy 75.565 102.87))
     (stroke (width 0) (type default))
     (uuid 8627f2c1-7fd1-4127-b94a-05a2b0a96741)
+  )
+  (wire (pts (xy 133.985 151.765) (xy 139.7 151.765))
+    (stroke (width 0) (type default))
+    (uuid 8ad1238b-118b-4bad-864f-3e49132dba5c)
   )
   (wire (pts (xy 178.435 75.565) (xy 178.435 78.105))
     (stroke (width 0) (type default))
@@ -1394,10 +1401,6 @@
     (stroke (width 0) (type default))
     (uuid a1773945-7e5f-4f34-9a5b-dfb682fec506)
   )
-  (wire (pts (xy 158.115 131.445) (xy 158.115 133.985))
-    (stroke (width 0) (type default))
-    (uuid a3e29935-e7ba-455b-91f2-e4079950ffea)
-  )
   (wire (pts (xy 194.945 121.92) (xy 217.17 121.92))
     (stroke (width 0) (type default))
     (uuid a8fce5f7-76b6-4e42-a700-d94a3f2cc55a)
@@ -1413,10 +1416,6 @@
   (wire (pts (xy 224.155 70.485) (xy 222.885 70.485))
     (stroke (width 0) (type default))
     (uuid b9466cb9-a35d-4c2d-b277-53007a0ea5bc)
-  )
-  (wire (pts (xy 145.415 131.445) (xy 145.415 133.985))
-    (stroke (width 0) (type default))
-    (uuid bcadf8ab-44a6-4232-a01d-111f399c9de4)
   )
   (wire (pts (xy 200.025 67.945) (xy 210.82 67.945))
     (stroke (width 0) (type default))
@@ -1449,6 +1448,10 @@
   (wire (pts (xy 160.655 67.945) (xy 165.735 67.945))
     (stroke (width 0) (type default))
     (uuid d80cf88d-9475-40ea-9b2e-637f57393e7d)
+  )
+  (wire (pts (xy 149.225 151.765) (xy 149.225 154.305))
+    (stroke (width 0) (type default))
+    (uuid dcfd09a8-523d-4788-ad33-3beb5c94f4d3)
   )
   (wire (pts (xy 88.265 62.23) (xy 88.265 55.88))
     (stroke (width 0) (type default))
@@ -1494,6 +1497,10 @@
     (stroke (width 0) (type default))
     (uuid f3b02472-93eb-4e68-91d4-2e33151103d0)
   )
+  (wire (pts (xy 133.985 154.305) (xy 133.985 151.765))
+    (stroke (width 0) (type default))
+    (uuid f7014100-4638-443f-8127-7a11c2a8a02d)
+  )
   (wire (pts (xy 200.025 78.105) (xy 210.82 78.105))
     (stroke (width 0) (type default))
     (uuid f979ed19-bbb8-4bfb-9e87-910944131dac)
@@ -1531,7 +1538,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 164b7938-f44d-482e-94e5-1165fe752a58)
   )
-  (text "1:1:3" (at 146.685 57.785 0)
+  (text "1:1:3" (at 146.685 57.15 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6504720b-381e-44e1-87a5-1a03c9fb8c12)
   )
@@ -1549,34 +1556,6 @@
     (uuid ef9da3ca-d5eb-4969-998b-86b13d8a1bc4)
   )
 
-  (symbol (lib_id "power:GND") (at 145.415 133.985 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 0469a96e-9991-4b57-8501-80068258a1e6)
-    (property "Reference" "#PWR08" (at 145.415 140.335 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 145.415 139.065 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 145.415 133.985 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 145.415 133.985 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 54de1f3e-5ec4-4ec2-9c45-eb8a1aad8dff))
-    (instances
-      (project "PD-AuxPower-Card"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
-          (reference "#PWR08") (unit 1)
-        )
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
-          (reference "#PWR068") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 100.965 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0f9921d2-1582-46d9-a32e-83e560060a57)
@@ -1592,7 +1571,7 @@
     (property "Datasheet" "" (at 100.965 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid bb6d54cb-625b-45ec-9bdb-2cfed219276d))
+    (pin "1" (uuid 46d989f7-d280-42a7-8f24-250d1a036417))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -1620,7 +1599,7 @@
     (property "Datasheet" "" (at 178.435 78.105 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 5a6e217d-6b53-45e5-b8c0-557fed479136))
+    (pin "1" (uuid fdbfdd04-539f-45d0-99d9-003628cb7217))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1645,7 +1624,7 @@
     (property "Datasheet" "" (at 192.405 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 79b579d9-14e4-49b0-8377-1937fd404766))
+    (pin "1" (uuid d71d5719-df4c-4b84-b7f2-2d75e16118a7))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1670,7 +1649,7 @@
     (property "Datasheet" "" (at 222.885 77.47 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7cf4b8c0-44d3-4912-96d0-696967378827))
+    (pin "1" (uuid e22af45d-be42-4615-b211-21357ebf59da))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1695,8 +1674,8 @@
     (property "Datasheet" "~" (at 192.405 98.425 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c6478396-f50c-4465-b157-74a24fd6fc3a))
-    (pin "2" (uuid 950eb384-b311-48fa-909f-aa93498ddbf7))
+    (pin "1" (uuid f66fa58b-6848-4fd8-97d6-9dbe9e7b8a2b))
+    (pin "2" (uuid 4ae7629d-5a2b-4c7e-9864-541e51eee7a5))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1721,8 +1700,8 @@
     (property "Datasheet" "~" (at 154.94 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e5036c3f-ae76-4669-8f1e-15504187daf3))
-    (pin "2" (uuid 56134411-7485-4eeb-9dda-e098c28b8082))
+    (pin "1" (uuid 0b8cd912-270b-45be-858a-d7e100a036fd))
+    (pin "2" (uuid a7736d43-be25-40dd-9c16-16ae237ea1da))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1747,8 +1726,8 @@
     (property "Datasheet" "~" (at 171.45 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 79ab0d12-aa56-4f7a-8c86-4ac4e9f9d1e5))
-    (pin "2" (uuid a3d06d15-cf21-430b-9956-6d902bc74173))
+    (pin "1" (uuid e8aa3bd0-9022-4128-a7b1-14ac80bff1f6))
+    (pin "2" (uuid ba491fec-0680-4d57-af83-1416db796eb5))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1773,7 +1752,7 @@
     (property "Datasheet" "" (at 88.265 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 1fad88c6-4362-412c-9f49-1d34f1564601))
+    (pin "1" (uuid c0666e35-eb82-4904-bb21-133f4241c7a2))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -1801,7 +1780,7 @@
     (property "Datasheet" "" (at 146.05 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid dd215d8e-b712-4d27-af78-dcc1bb72f4f0))
+    (pin "1" (uuid 9d83f623-ad34-48e7-a671-fe743f93fb40))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -1829,8 +1808,8 @@
     (property "Datasheet" "~" (at 111.125 123.19 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid dd90410d-ba9b-430f-b68a-e707c1d16e45))
-    (pin "2" (uuid d27bb11d-9a78-424d-a66d-5985cf1d157b))
+    (pin "1" (uuid c343843e-a569-436b-a6be-64200d2ea402))
+    (pin "2" (uuid 5e307a99-0562-428f-be0d-9473ef28ebd2))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1855,8 +1834,8 @@
     (property "Datasheet" "~" (at 80.01 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c69ddc2f-5f9b-4469-a941-ed53bae6fa52))
-    (pin "2" (uuid 1d567fad-a65a-41cf-ba3f-76182e5548fc))
+    (pin "1" (uuid e0875cac-8089-4787-8a11-1525b9181ef8))
+    (pin "2" (uuid 649b058e-e3f4-401b-b231-03749a20502f))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1881,8 +1860,8 @@
     (property "Datasheet" "~" (at 88.265 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid af8346b3-8428-4b1d-955a-8348d667cb89))
-    (pin "2" (uuid 10bd1a6d-9635-4ac5-a3b5-fd4c235e662a))
+    (pin "1" (uuid db7139a7-fb59-4932-9550-f99ac6e4f35d))
+    (pin "2" (uuid 1c714bd3-4c46-4a45-b0fe-78c02ad7ee79))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1907,8 +1886,8 @@
     (property "Datasheet" "~" (at 178.435 73.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 91db6dc4-59b9-47b0-b014-2e79baec5b09))
-    (pin "2" (uuid 02b26414-3f3b-4dd2-8d1f-c36faaeb325a))
+    (pin "1" (uuid bbb5fd81-ee1a-4bd2-a1d3-f8701d38fe23))
+    (pin "2" (uuid ce166387-289f-484a-b485-d683c95a88ac))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1924,7 +1903,7 @@
     (property "Reference" "R26" (at 218.6686 93.9713 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "8.2k" (at 218.6686 95.8923 0)
+    (property "Value" "0" (at 218.6686 95.8923 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 217.17 94.615 0)
@@ -1933,8 +1912,8 @@
     (property "Datasheet" "~" (at 217.17 94.615 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid dd24c668-3939-4e0d-985d-fbf3079ace42))
-    (pin "2" (uuid e6d0f317-73ae-4718-a541-2cfdc6b93a79))
+    (pin "1" (uuid 7e18d72a-3ff8-44e4-9ece-2854a564da77))
+    (pin "2" (uuid 8861f3da-0da3-4597-a3ac-f63e0f343010))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1959,8 +1938,8 @@
     (property "Datasheet" "~" (at 95.885 123.825 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d798777d-533b-4be8-99de-ffed1cdc5fff))
-    (pin "2" (uuid 8e931243-8ddc-4b8a-a793-060ae58f723e))
+    (pin "1" (uuid 9748d96a-d9a6-4197-8e97-30dcd810f964))
+    (pin "2" (uuid afa6b3cd-321e-435d-ae11-4b1e23db2b06))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -1985,7 +1964,7 @@
     (property "Datasheet" "" (at 217.17 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 81f93884-702a-4133-8d37-4a3e85814e42))
+    (pin "1" (uuid 56f57280-47fd-4a11-95c8-adecffdc9570))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2010,7 +1989,7 @@
     (property "Datasheet" "" (at 171.45 90.805 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 47b7d059-3fe6-45f6-b48c-d23202e3a6be))
+    (pin "1" (uuid 95879585-a2b1-4d7a-9d02-9e91317ed323))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -2029,7 +2008,7 @@
     (property "Reference" "R3" (at 218.6686 107.9413 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "0" (at 218.6686 109.8623 0)
+    (property "Value" "8.2k" (at 218.6686 109.8623 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 217.17 108.585 0)
@@ -2038,8 +2017,8 @@
     (property "Datasheet" "~" (at 217.17 108.585 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b09ada4d-e819-4987-b14d-3462ac2d2d5f))
-    (pin "2" (uuid 48a8dd9e-6a14-41e2-bf7f-3f19c43aa958))
+    (pin "1" (uuid d1409087-6b45-4822-ac5f-c61a3e94e1cb))
+    (pin "2" (uuid 11895604-9bd2-4d8a-9d7d-7f7243225b29))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2070,8 +2049,8 @@
     (property "Sim.Pins" "1=K 2=A" (at 79.375 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6ea0397d-3646-4d6f-9de3-da37439b1ead))
-    (pin "2" (uuid 63fd5bd3-582d-47c3-86c9-489643c0c733))
+    (pin "1" (uuid 70868fbe-225a-4c7b-8939-946d599f053e))
+    (pin "2" (uuid 0dffe579-958e-48ec-b03a-a5a84216ba8a))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2096,8 +2075,8 @@
     (property "Datasheet" "~" (at 190.5 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 0b066c8f-15ba-43b6-832a-6ebdc18eb25c))
-    (pin "2" (uuid 13182c2f-0e58-46a6-b54a-0362b2b859fb))
+    (pin "1" (uuid 88d8d3f1-e5d1-46a8-b000-a8d25278c544))
+    (pin "2" (uuid 55494e10-80aa-470a-9ec7-419d352f4d32))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2122,9 +2101,9 @@
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl431.pdf" (at 188.595 121.92 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (pin "1" (uuid 95176c10-e8fe-4ab4-af57-da656529117f))
-    (pin "2" (uuid 3b1de4f9-2fd8-4015-af13-f29393705476))
-    (pin "3" (uuid 817461e9-2a7e-4f23-b516-f95264c2e80c))
+    (pin "1" (uuid 0e2e37e0-8abe-44ad-bf5d-7c8a4b0be3f7))
+    (pin "2" (uuid 9b47cc07-3822-45c5-85c1-96b6c5476de0))
+    (pin "3" (uuid 131586d7-ea71-4200-bcc0-7abbeae21ba3))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2149,9 +2128,9 @@
     (property "Datasheet" "~" (at 170.815 67.945 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c2cc5e5f-1b00-416e-a116-225b5b8445a2))
-    (pin "2" (uuid 4e1c4d5e-2f54-460f-bfc4-afbc4eaa14f2))
-    (pin "3" (uuid 10b64add-7a48-4a03-a13e-60c022e35127))
+    (pin "1" (uuid 3ef4a719-7564-4a89-aecc-5cc791ebef9e))
+    (pin "2" (uuid bf7d2f3a-ca7b-4fc2-b556-3af3f2ac7b04))
+    (pin "3" (uuid 0fa66b46-774e-449d-a446-2bb96a40128d))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2176,7 +2155,7 @@
     (property "Datasheet" "" (at 111.125 130.175 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 8416aa57-80af-47cc-b6f0-3caf4feaa5dc))
+    (pin "1" (uuid cf5f54c2-f61b-4987-8743-eb8f99808488))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -2184,32 +2163,6 @@
         )
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "#PWR067") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C_Small") (at 151.765 131.445 90) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 97f3a378-07a9-4ea9-9e27-d2b8d4b8236e)
-    (property "Reference" "C24" (at 151.7713 136.017 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "1n/500V" (at 151.7713 134.096 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Capacitor_SMD:C_1210_3225Metric" (at 151.765 131.445 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 151.765 131.445 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid f3304813-b778-4fcc-a3e2-f3cf947147d1))
-    (pin "2" (uuid db45ba1b-2c8e-4b85-bcfd-56cb0f77cab1))
-    (instances
-      (project "PD-AuxPower-Card"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
-          (reference "C24") (unit 1)
         )
       )
     )
@@ -2230,8 +2183,8 @@
     (property "Datasheet" "~" (at 104.14 69.215 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 1bd76dd6-069e-4c04-844f-071f2195e08d))
-    (pin "2" (uuid a362b164-578b-41ff-8944-73540fe9c1fa))
+    (pin "1" (uuid 34bf3757-25d9-4ab1-b11a-2ab5834ee935))
+    (pin "2" (uuid 7abadac6-46cc-4092-ac61-d4d4bc996a85))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2256,7 +2209,7 @@
     (property "Datasheet" "" (at 88.265 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 59eeae35-4ce9-4a8f-937a-990e16d48e64))
+    (pin "1" (uuid 92bebafb-c215-4fe0-ad3a-40c53b5d130e))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -2284,8 +2237,8 @@
     (property "Datasheet" "~" (at 93.345 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 13307b91-ac20-4b5a-8fc2-e45406521cf8))
-    (pin "2" (uuid 08ae9180-141c-4501-924a-a432877293e5))
+    (pin "1" (uuid 18522ec2-f0d6-474a-a1b4-7ecd2c49f1cf))
+    (pin "2" (uuid b2a7e05c-81e1-47a4-b6f2-66468366f9ea))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2310,8 +2263,8 @@
     (property "Datasheet" "~" (at 102.235 118.745 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 60444ad8-699d-4559-9eb6-8ed3ca090679))
-    (pin "2" (uuid 845c3fac-4483-46c3-83e7-63ce98783f9f))
+    (pin "1" (uuid 135edc47-b8ac-4eba-a11b-198dcf11dc1b))
+    (pin "2" (uuid e14d29ed-3338-4bec-9017-09a230e7b40a))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2336,8 +2289,8 @@
     (property "Datasheet" "~" (at 192.405 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e70cfce5-a49d-4481-b503-b16b1804c764))
-    (pin "2" (uuid 7598796c-e508-4eaa-a71b-2bc042209159))
+    (pin "1" (uuid 5579c525-69a1-4b28-8e43-3c0dd60affbd))
+    (pin "2" (uuid ac514d5f-f6e6-45bc-89f9-d84616e0569d))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2362,8 +2315,8 @@
     (property "Datasheet" "~" (at 184.785 67.945 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 712457b7-1ada-4e75-b1d2-304bc7cbf3a1))
-    (pin "2" (uuid b7348517-21f6-4cfa-af9b-09a63a649690))
+    (pin "1" (uuid d1fd1557-9350-43f5-a390-af34625f858c))
+    (pin "2" (uuid 562e06e4-464e-4e6c-8252-00125efecd19))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2388,12 +2341,38 @@
     (property "Datasheet" "~" (at 210.82 73.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7f14736d-629d-4ace-96c8-8ff14aaf71c0))
-    (pin "2" (uuid 29628365-9844-4844-bc0b-df20f761ce8b))
+    (pin "1" (uuid 458b43fd-efc7-42a3-bb3d-26bd95755036))
+    (pin "2" (uuid 4985961f-2adc-4f72-92ba-939403f2086b))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C19") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C_Small") (at 142.24 151.765 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid c26d617b-c0a2-47bf-9e63-e68f6c96e1d9)
+    (property "Reference" "C3" (at 142.2463 144.78 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "2200p/500V" (at 142.2463 147.32 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 142.24 151.765 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 142.24 151.765 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 6f6b627c-1bf2-4ed8-aead-80fd98e72a27))
+    (pin "2" (uuid f61f8847-2f7b-4f79-9c5d-d8ebb58f4a29))
+    (instances
+      (project "PD-AuxPower-Card"
+        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
+          (reference "C3") (unit 1)
         )
       )
     )
@@ -2408,22 +2387,47 @@
     (property "Value" "ER 9.5" (at 149.225 60.96 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "User:Transformer_ER9.5_11.6mmx8.2mm" (at 149.225 73.025 0)
+    (property "Footprint" "Johnson's:Transformer_ER9.5_11.6mmx8.2mm" (at 149.225 73.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 149.225 73.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e776cbf2-4423-4ec8-a55c-48a7feb21e2b))
-    (pin "2" (uuid 18361a2e-0352-465f-a4a4-583aecbc6b07))
-    (pin "3" (uuid 87b1d705-eaa1-474c-9bba-4bd76488bf98))
-    (pin "4" (uuid e7444ee4-6970-4e9c-b1b1-4d7624df91eb))
-    (pin "5" (uuid cfc1b0be-8dc0-4377-a9a3-473f803d3dbf))
-    (pin "8" (uuid cf6c6960-7000-4b07-9417-8b15bc1ad1da))
+    (pin "1" (uuid a5a2f356-1c6a-4bef-9d7d-bd88dbf034c3))
+    (pin "2" (uuid 3931331c-a98e-48d9-b49e-5f3b59c8514f))
+    (pin "3" (uuid 63040527-8c89-4741-ac9c-2421f4fb22c3))
+    (pin "4" (uuid 25f0c425-aa8c-42fc-ae65-8724e281d59f))
+    (pin "5" (uuid 244ffa47-c9e7-484d-b6fd-87de9c76b999))
+    (pin "8" (uuid dabf59ef-ccbd-4289-923b-9b8ceeaa9daa))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "T1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND1") (at 149.225 154.305 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid ca55ec92-7278-4e5f-bf28-f62af80dbc4e)
+    (property "Reference" "#PWR014" (at 149.225 160.655 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND1" (at 149.225 158.4405 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 149.225 154.305 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 149.225 154.305 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e6bb411e-1f4d-4116-b692-42ad236c8d97))
+    (instances
+      (project "PD-AuxPower-Card"
+        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -2444,8 +2448,8 @@
     (property "Datasheet" "~" (at 104.14 61.595 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2173ee44-ecd8-4138-bd91-d4be2f2cee51))
-    (pin "2" (uuid 58a68c06-f488-45cd-bb50-ff60c558a157))
+    (pin "1" (uuid 14925d1c-5bf2-40c0-bdb0-8f9d915f1b8f))
+    (pin "2" (uuid 4e88c949-083c-42cb-a3a0-e9ecd547a4b5))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2470,8 +2474,8 @@
     (property "Datasheet" "~" (at 229.235 67.945 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 1eb9e6f7-83e4-4405-9caf-a50f39631ab8))
-    (pin "2" (uuid cde372a4-c544-4359-a8d1-cd7f2079f21b))
+    (pin "1" (uuid 6f3a60c2-676a-40f3-a9dd-6e3ecb009f97))
+    (pin "2" (uuid 6c829709-4aab-43f0-a363-cb4e0f46b746))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2496,7 +2500,7 @@
     (property "Datasheet" "" (at 171.45 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b81dca1e-714d-4c0a-94bc-c8529c9d2753))
+    (pin "1" (uuid 9ad6e8ad-971c-4931-8a39-16983c5d002e))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -2524,7 +2528,7 @@
     (property "Datasheet" "" (at 95.885 128.905 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d04c3995-c67e-4728-8292-62081688c55b))
+    (pin "1" (uuid d1ae1d3a-c228-4d45-b77e-e47f3bedeba0))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
@@ -2552,8 +2556,8 @@
     (property "Datasheet" "~" (at 217.17 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid a14444f1-91fc-4826-8721-15ec5623976c))
-    (pin "2" (uuid b980a9ab-dbc1-49c9-ad2b-7bdbc8830e5c))
+    (pin "1" (uuid d8dc0104-16f1-4ca0-adb3-ea35b27529d5))
+    (pin "2" (uuid 71214d24-6d09-44c7-9fa4-fea2991b73a9))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2578,8 +2582,8 @@
     (property "Datasheet" "~" (at 200.025 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 880443fe-784b-4dbd-9c35-c7355d957eaa))
-    (pin "2" (uuid f9fea903-8ec2-426f-9a5e-eb5414c333d8))
+    (pin "1" (uuid 63322d81-512d-4022-94f9-f9504cf6cdc5))
+    (pin "2" (uuid c762998c-be1f-479a-9096-c7b13f347ab3))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2604,9 +2608,9 @@
     (property "Datasheet" "https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF" (at 108.585 97.79 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (pin "1" (uuid da59dab7-1877-4f06-a215-905ba92d3302))
-    (pin "4" (uuid 76942e47-25ad-4189-8cba-a672397ff9bd))
-    (pin "5" (uuid c4287d98-016b-42a3-95ed-65bcde95448f))
+    (pin "1" (uuid 0a4b185a-a247-43ba-93af-1643c5cde8b8))
+    (pin "4" (uuid d2652957-ac0f-4f1a-9178-2b9f9010f80e))
+    (pin "5" (uuid 76b05260-628b-4969-82a6-ef7655d25dc3))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2637,8 +2641,8 @@
     (property "Sim.Pins" "1=K 2=A" (at 111.125 80.645 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e373d1bf-e49f-4388-b65d-f19970c8092c))
-    (pin "2" (uuid 3f0bde07-bc16-46a2-90b2-b1d47e07ad42))
+    (pin "1" (uuid fec70d3e-2c00-4b12-b752-65d44bcd01f5))
+    (pin "2" (uuid 9edf7f74-c4a5-484d-9239-5a0ccdfc2f89))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2663,12 +2667,40 @@
     (property "Datasheet" "~" (at 146.05 115.57 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c1926483-d9df-4d4b-ae93-b1af2e9163d8))
-    (pin "2" (uuid 5acc8a37-3b4c-4242-b9de-6d75d653b819))
+    (pin "1" (uuid 96ca2181-1a93-4799-b5b1-bd24049e3193))
+    (pin "2" (uuid 6ccfa2b6-4660-422f-8137-08f26834d707))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "C13") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 133.985 154.305 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid eda8db5d-dbe9-4d22-b06d-f35bcd8a1196)
+    (property "Reference" "#PWR08" (at 133.985 160.655 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 133.985 158.75 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 133.985 154.305 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 133.985 154.305 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid bd6540e0-1e2c-4389-a5a7-ab8ebc1caa03))
+    (instances
+      (project "PD-AuxPower-Card"
+        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee"
+          (reference "#PWR08") (unit 1)
+        )
+        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
+          (reference "#PWR04") (unit 1)
         )
       )
     )
@@ -2689,8 +2721,8 @@
     (property "Datasheet" "~" (at 111.125 65.405 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e2a2e4ee-c1e5-4b15-b900-69d2f9f1d18d))
-    (pin "2" (uuid c33a20f5-d7ea-4bff-8113-21a3297741c9))
+    (pin "1" (uuid d0e4e7a1-4595-4efa-b591-7810c1707a58))
+    (pin "2" (uuid d8491494-8761-4a2e-bf15-b079d5f60453))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
@@ -2715,39 +2747,14 @@
     (property "Datasheet" "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" (at 179.705 114.3 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (pin "1" (uuid 206f0df4-775b-4175-8cb8-dafd5a9fa204))
-    (pin "2" (uuid 6bfc9b6c-805c-4a18-bd26-8880e8ebd0fd))
-    (pin "3" (uuid 30677556-bbe3-4032-9130-535a2143118c))
-    (pin "4" (uuid 98053b9b-5f69-448a-a337-73b3117121ff))
+    (pin "1" (uuid 3663f0af-7427-4277-994a-c1a12ef514c3))
+    (pin "2" (uuid 26e0eb3c-c3b7-4d4a-a463-436ccdb4e8b5))
+    (pin "3" (uuid cb398348-922e-48e9-a0d8-ee88b70261d3))
+    (pin "4" (uuid 25666282-fa09-4baa-95ec-a073c52fa4fa))
     (instances
       (project "PD-AuxPower-Card"
         (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
           (reference "U8") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND1") (at 158.115 133.985 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid fe076330-62e1-4e4b-8fd5-5f3b99818237)
-    (property "Reference" "#PWR069" (at 158.115 140.335 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND1" (at 158.115 138.1205 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 158.115 133.985 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 158.115 133.985 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ae7289cb-5efe-4342-bfa6-caa4d7877d36))
-    (instances
-      (project "PD-AuxPower-Card"
-        (path "/48c5bc14-ccc3-44de-b526-838e3d53c0ee/40f113c1-6183-4863-b2ec-a4ca33698158"
-          (reference "#PWR069") (unit 1)
         )
       )
     )
