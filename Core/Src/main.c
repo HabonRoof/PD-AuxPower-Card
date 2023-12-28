@@ -48,6 +48,11 @@
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
+COMP_HandleTypeDef hcomp1;
+COMP_HandleTypeDef hcomp2;
+
+DAC_HandleTypeDef hdac1;
+
 I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim1;
@@ -73,6 +78,9 @@ static void MX_TIM2_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM16_Init(void);
 static void MX_TIM15_Init(void);
+static void MX_COMP1_Init(void);
+static void MX_COMP2_Init(void);
+static void MX_DAC1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -151,6 +159,9 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM16_Init();
   MX_TIM15_Init();
+  MX_COMP1_Init();
+  MX_COMP2_Init();
+  MX_DAC1_Init();
   /* USER CODE BEGIN 2 */
   // Initialize FUSB302B PD chip
   //
@@ -184,33 +195,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	  i2c_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-//	  if(i2c_status == HAL_OK){
-//		  i2c_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-//	  	  if(i2c_status == HAL_OK){
-//	  		i2c_data =  i2c_buffer[0];
-//	  	  }
-//	  	  else{
-//			  board_status = I2C_ERROR;
-//	  	  }
-//	  }
-//	  else{
-//		  board_status = I2C_ERROR;
-//	  }
-//	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
-//	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
-//	  HAL_Delay(100);
-//	  i2c_buffer[0] = 0x01;
+	  i2c_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+	  if(i2c_status == HAL_OK){
+		  i2c_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+	  	  if(i2c_status == HAL_OK){
+	  		i2c_data =  i2c_buffer[0];
+	  	  }
+	  	  else{
+			  board_status = I2C_ERROR;
+	  	  }
+	  }
+	  else{
+		  board_status = I2C_ERROR;
+	  }
+	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
+	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
 
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 	  HAL_Delay(500);
-	  FUSB302B_check_CC_pin(&hi2c1, &fusb);
-	  FUSB302B_check_FIFO_status(&hi2c1, &fusb);
-	  FUSB302B_start_CC_communication(&hi2c1, &fusb);
-	  FUSB302B_read_all(&hi2c1, &fusb);
-	  _5vLED_TOGGLE;
 
   }
   /* USER CODE END 3 */
@@ -295,7 +299,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
-  hadc1.Init.NbrOfConversion = 4;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
@@ -309,7 +313,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_8;
+  sConfig.Channel = ADC_CHANNEL_9;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
@@ -322,26 +326,8 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_9;
-  sConfig.Rank = ADC_REGULAR_RANK_2;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure Regular Channel
-  */
   sConfig.Channel = ADC_CHANNEL_10;
-  sConfig.Rank = ADC_REGULAR_RANK_3;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_11;
-  sConfig.Rank = ADC_REGULAR_RANK_4;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -349,6 +335,124 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
+}
+
+/**
+  * @brief COMP1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_COMP1_Init(void)
+{
+
+  /* USER CODE BEGIN COMP1_Init 0 */
+
+  /* USER CODE END COMP1_Init 0 */
+
+  /* USER CODE BEGIN COMP1_Init 1 */
+
+  /* USER CODE END COMP1_Init 1 */
+  hcomp1.Instance = COMP1;
+  hcomp1.Init.InvertingInput = COMP_INPUT_MINUS_DAC1_CH1;
+  hcomp1.Init.NonInvertingInput = COMP_INPUT_PLUS_IO3;
+  hcomp1.Init.OutputPol = COMP_OUTPUTPOL_NONINVERTED;
+  hcomp1.Init.Hysteresis = COMP_HYSTERESIS_NONE;
+  hcomp1.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
+  hcomp1.Init.Mode = COMP_POWERMODE_HIGHSPEED;
+  hcomp1.Init.WindowMode = COMP_WINDOWMODE_DISABLE;
+  hcomp1.Init.TriggerMode = COMP_TRIGGERMODE_NONE;
+  if (HAL_COMP_Init(&hcomp1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN COMP1_Init 2 */
+
+  /* USER CODE END COMP1_Init 2 */
+
+}
+
+/**
+  * @brief COMP2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_COMP2_Init(void)
+{
+
+  /* USER CODE BEGIN COMP2_Init 0 */
+
+  /* USER CODE END COMP2_Init 0 */
+
+  /* USER CODE BEGIN COMP2_Init 1 */
+
+  /* USER CODE END COMP2_Init 1 */
+  hcomp2.Instance = COMP2;
+  hcomp2.Init.InvertingInput = COMP_INPUT_MINUS_DAC1_CH2;
+  hcomp2.Init.NonInvertingInput = COMP_INPUT_PLUS_IO1;
+  hcomp2.Init.OutputPol = COMP_OUTPUTPOL_NONINVERTED;
+  hcomp2.Init.Hysteresis = COMP_HYSTERESIS_NONE;
+  hcomp2.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
+  hcomp2.Init.Mode = COMP_POWERMODE_HIGHSPEED;
+  hcomp2.Init.WindowMode = COMP_WINDOWMODE_DISABLE;
+  hcomp2.Init.TriggerMode = COMP_TRIGGERMODE_NONE;
+  if (HAL_COMP_Init(&hcomp2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN COMP2_Init 2 */
+
+  /* USER CODE END COMP2_Init 2 */
+
+}
+
+/**
+  * @brief DAC1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_DAC1_Init(void)
+{
+
+  /* USER CODE BEGIN DAC1_Init 0 */
+
+  /* USER CODE END DAC1_Init 0 */
+
+  DAC_ChannelConfTypeDef sConfig = {0};
+
+  /* USER CODE BEGIN DAC1_Init 1 */
+
+  /* USER CODE END DAC1_Init 1 */
+
+  /** DAC Initialization
+  */
+  hdac1.Instance = DAC1;
+  if (HAL_DAC_Init(&hdac1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** DAC channel OUT1 config
+  */
+  sConfig.DAC_SampleAndHold = DAC_SAMPLEANDHOLD_DISABLE;
+  sConfig.DAC_Trigger = DAC_TRIGGER_NONE;
+  sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_DISABLE;
+  sConfig.DAC_ConnectOnChipPeripheral = DAC_CHIPCONNECT_ENABLE;
+  sConfig.DAC_UserTrimming = DAC_TRIMMING_FACTORY;
+  if (HAL_DAC_ConfigChannel(&hdac1, &sConfig, DAC_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** DAC channel OUT2 config
+  */
+  if (HAL_DAC_ConfigChannel(&hdac1, &sConfig, DAC_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN DAC1_Init 2 */
+
+  /* USER CODE END DAC1_Init 2 */
 
 }
 
@@ -697,7 +801,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, LED_3v3_Pin|LED_5v_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_12v_Pin|LED_24v_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_24v_Pin|LED_12v_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED_3v3_Pin LED_5v_Pin */
   GPIO_InitStruct.Pin = LED_3v3_Pin|LED_5v_Pin;
@@ -706,8 +810,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_12v_Pin LED_24v_Pin */
-  GPIO_InitStruct.Pin = LED_12v_Pin|LED_24v_Pin;
+  /*Configure GPIO pins : LED_24v_Pin LED_12v_Pin */
+  GPIO_InitStruct.Pin = LED_24v_Pin|LED_12v_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -718,12 +822,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_INT_Pin */
-  GPIO_InitStruct.Pin = USB_INT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(USB_INT_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
   _3v3LED_OFF;

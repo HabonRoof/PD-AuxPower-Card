@@ -65,18 +65,14 @@ void Error_Handler(void);
 #define LED_5v_GPIO_Port GPIOC
 #define DRV2_Pin GPIO_PIN_0
 #define DRV2_GPIO_Port GPIOA
-#define LED_12v_Pin GPIO_PIN_1
-#define LED_12v_GPIO_Port GPIOA
 #define LED_24v_Pin GPIO_PIN_2
 #define LED_24v_GPIO_Port GPIOA
-#define Iout2_FB_Pin GPIO_PIN_3
-#define Iout2_FB_GPIO_Port GPIOA
 #define Vout2_FB_Pin GPIO_PIN_4
 #define Vout2_FB_GPIO_Port GPIOA
 #define Vout1_FB_Pin GPIO_PIN_5
 #define Vout1_FB_GPIO_Port GPIOA
-#define Iout1_FB_Pin GPIO_PIN_6
-#define Iout1_FB_GPIO_Port GPIOA
+#define LED_12v_Pin GPIO_PIN_7
+#define LED_12v_GPIO_Port GPIOA
 #define Vout1_sel_Pin GPIO_PIN_8
 #define Vout1_sel_GPIO_Port GPIOA
 #define DRV1_Pin GPIO_PIN_11
@@ -87,8 +83,6 @@ void Error_Handler(void);
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
-#define USB_INT_Pin GPIO_PIN_5
-#define USB_INT_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
