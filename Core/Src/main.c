@@ -87,20 +87,20 @@ static void MX_DAC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint16_t ADC_res[4] = {0};
+uint16_t ADC_res[2] = {0};
 uint16_t Iout1_FB = 0;
 uint16_t Iout2_FB = 0;
 uint16_t Vout1_FB = 0;
 uint16_t Vout2_FB = 0;
 uint32_t timer15_ctr = 0;
 uint32_t timer16_ctr = 0;
-uint8_t adc_isr_ctr = 0;
+uint16_t adc_isr_ctr = 0;
 uint16_t pwm1_duty = PWM1_MIN_DUTY;
 uint16_t pwm2_duty = PWM2_MIN_DUTY;
-uint8_t SW_5v_3v3 = 0;
-uint8_t SW_24v_12v = 0;
-uint8_t SW_5v_3v3_old = 2;
-uint8_t SW_24v_12v_old = 2;
+uint8_t SW_3v3_5v = 0;
+uint8_t SW_12v_24v = 0;
+uint8_t SW_3v3_5v_old = 2;
+uint8_t SW_12v_24v_old = 2;
 
 
 // FUSB302B PD controller I2C address
@@ -177,7 +177,7 @@ int main(void)
   HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_1);
 
   // kick off ADC DMA conversion, this function active ADC peripheral
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_res, 4);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_res, 2);
 
   // start 10Hz house-keeping timer
   HAL_TIM_Base_Start_IT(&htim16);
@@ -195,21 +195,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  i2c_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-	  if(i2c_status == HAL_OK){
-		  i2c_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
-	  	  if(i2c_status == HAL_OK){
-	  		i2c_data =  i2c_buffer[0];
-	  	  }
-	  	  else{
-			  board_status = I2C_ERROR;
-	  	  }
-	  }
-	  else{
-		  board_status = I2C_ERROR;
-	  }
-	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
-	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+//	  i2c_status = HAL_I2C_Master_Transmit(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+//	  if(i2c_status == HAL_OK){
+//		  i2c_status = HAL_I2C_Master_Receive(&hi2c1, FUSB302B_ADDR, i2c_buffer, 1, HAL_MAX_DELAY);
+//	  	  if(i2c_status == HAL_OK){
+//	  		i2c_data =  i2c_buffer[0];
+//	  	  }
+//	  	  else{
+//			  board_status = I2C_ERROR;
+//	  	  }
+//	  }
+//	  else{
+//		  board_status = I2C_ERROR;
+//	  }
+//	  sprintf(uart_tx_msg,"Iout1_FB = %d Iout2_FB = %d Vout1_FB = %d Vout2_FB = %d \n\r",Iout1_FB, Iout2_FB, Vout1_FB, Vout2_FB);
+//	  HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
 
     /* USER CODE END WHILE */
 
@@ -301,7 +301,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO;
+  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T15_TRGO;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
   hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
@@ -361,7 +361,7 @@ static void MX_COMP1_Init(void)
   hcomp1.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
   hcomp1.Init.Mode = COMP_POWERMODE_HIGHSPEED;
   hcomp1.Init.WindowMode = COMP_WINDOWMODE_DISABLE;
-  hcomp1.Init.TriggerMode = COMP_TRIGGERMODE_NONE;
+  hcomp1.Init.TriggerMode = COMP_TRIGGERMODE_IT_RISING;
   if (HAL_COMP_Init(&hcomp1) != HAL_OK)
   {
     Error_Handler();
@@ -395,7 +395,7 @@ static void MX_COMP2_Init(void)
   hcomp2.Init.BlankingSrce = COMP_BLANKINGSRC_NONE;
   hcomp2.Init.Mode = COMP_POWERMODE_HIGHSPEED;
   hcomp2.Init.WindowMode = COMP_WINDOWMODE_DISABLE;
-  hcomp2.Init.TriggerMode = COMP_TRIGGERMODE_NONE;
+  hcomp2.Init.TriggerMode = COMP_TRIGGERMODE_IT_RISING;
   if (HAL_COMP_Init(&hcomp2) != HAL_OK)
   {
     Error_Handler();
@@ -527,7 +527,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 399;
+  htim1.Init.Period = 159;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -607,7 +607,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 399;
+  htim2.Init.Period = 159;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -673,10 +673,10 @@ static void MX_TIM15_Init(void)
   htim15.Instance = TIM15;
   htim15.Init.Prescaler = 0;
   htim15.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim15.Init.Period = 65535;
+  htim15.Init.Period = 399;
   htim15.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim15.Init.RepetitionCounter = 0;
-  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  htim15.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim15) != HAL_OK)
   {
     Error_Handler();
@@ -686,7 +686,7 @@ static void MX_TIM15_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim15, &sMasterConfig) != HAL_OK)
   {
@@ -817,8 +817,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Vout1_sel_Pin Vout2_sel_Pin */
-  GPIO_InitStruct.Pin = Vout1_sel_Pin|Vout2_sel_Pin;
+  /*Configure GPIO pins : Vout2_sel_Pin Vout1_sel_Pin */
+  GPIO_InitStruct.Pin = Vout2_sel_Pin|Vout1_sel_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -834,14 +834,11 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	// PWM divider for lower transformer size
-	if(adc_isr_ctr % ADC_ISR_DIV == 0){
+	// 65kHz update rate
 	adc_isr_ctr = 0;
 	// Read The ADC Conversion result to variables
-	Iout2_FB = ADC_res[0];
-	Vout2_FB = ADC_res[1];
-	Vout1_FB = ADC_res[2];
-	Iout1_FB = ADC_res[3];
+	Vout2_FB = ADC_res[0];	// PA4
+	Vout1_FB = ADC_res[1];	// PA5
 
 	Vout1_pid_param.adc_fb_value = Vout1_FB;
 	pid_process(&Vout1_pid_param);
@@ -850,55 +847,50 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	Vout2_pid_param.adc_fb_value = Vout2_FB;
 	pid_process(&Vout2_pid_param);
 	htim2.Instance->CCR1 = Vout2_pid_param.output;
-	}
-	adc_isr_ctr++;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim == &htim16){
-		SW_5v_3v3  = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
-		SW_24v_12v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
+		SW_3v3_5v  = HAL_GPIO_ReadPin(Vout1_sel_GPIO_Port, Vout1_sel_Pin);
+		SW_12v_24v = HAL_GPIO_ReadPin(Vout2_sel_GPIO_Port, Vout2_sel_Pin);
 
-		if(SW_5v_3v3 != SW_5v_3v3_old){
-			SW_5v_3v3_old = SW_5v_3v3;
+		if(SW_3v3_5v != SW_3v3_5v_old){
+			SW_3v3_5v_old = SW_3v3_5v;
 			// indicate current output voltage mode
-			if(SW_5v_3v3 == 1){
-				_3v3LED_ON;
-				_5vLED_OFF;
-				Vout1_pid_param.target_value = _3v3_ADC_target;
-				sprintf(uart_tx_msg,"Output1 set to 3v3\n\r");
-			}
-			else{
+			if(SW_3v3_5v == 1){
 				_3v3LED_OFF;
 				_5vLED_ON;
 				Vout1_pid_param.target_value = _5v_ADC_target;
-				sprintf(uart_tx_msg,"Output1 set to 5v\n\r");
-			}
-			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
-		}
-
-		if(SW_24v_12v != SW_24v_12v_old){
-			SW_24v_12v_old = SW_24v_12v;
-			if(SW_24v_12v == 1){
-				_12vLED_ON;
-				_24vLED_OFF;
-				Vout2_pid_param.target_value = _12v_ADC_target;
-				sprintf(uart_tx_msg,"Output2 set to 12v\n\r");
+//				sprintf(uart_tx_msg,"Output1 set to 3v3\n\r");
 			}
 			else{
+				_3v3LED_ON;
+				_5vLED_OFF;
+				Vout1_pid_param.target_value = _3v3_ADC_target;
+//				sprintf(uart_tx_msg,"Output1 set to 5v\n\r");
+			}
+//			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+		}
+
+		if(SW_12v_24v != SW_12v_24v_old){
+			SW_12v_24v_old = SW_12v_24v;
+			if(SW_12v_24v == 1){
 				_12vLED_OFF;
 				_24vLED_ON;
 				Vout2_pid_param.target_value = _24v_ADC_target;
-				sprintf(uart_tx_msg,"Output2 set to 24v\n\r");
+//				sprintf(uart_tx_msg,"Output2 set to 12v\n\r");
 			}
-			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
+			else{
+
+				_12vLED_ON;
+				_24vLED_OFF;
+				Vout2_pid_param.target_value = _12v_ADC_target;
+//				sprintf(uart_tx_msg,"Output2 set to 24v\n\r");
+			}
+//			HAL_UART_Transmit(&huart1, (uint8_t*)uart_tx_msg, strlen(uart_tx_msg), 10);
 		}
 		// 100Hz counter
 		timer16_ctr ++;
-	}
-	if(htim == &htim15){
-		// 10kHz counter
-//		timer15_ctr ++;
 	}
 }
 

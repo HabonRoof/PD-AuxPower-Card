@@ -73,12 +73,12 @@ void Error_Handler(void);
 #define Vout1_FB_GPIO_Port GPIOA
 #define LED_12v_Pin GPIO_PIN_7
 #define LED_12v_GPIO_Port GPIOA
-#define Vout1_sel_Pin GPIO_PIN_8
-#define Vout1_sel_GPIO_Port GPIOA
+#define Vout2_sel_Pin GPIO_PIN_8
+#define Vout2_sel_GPIO_Port GPIOA
 #define DRV1_Pin GPIO_PIN_11
 #define DRV1_GPIO_Port GPIOA
-#define Vout2_sel_Pin GPIO_PIN_12
-#define Vout2_sel_GPIO_Port GPIOA
+#define Vout1_sel_Pin GPIO_PIN_12
+#define Vout1_sel_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
